@@ -3,23 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sadhasivam | Marketing Internship Resume</title>
+    <title>Sadhasivam | Marketing Internship Resume - New Look</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 
     <style>
         :root {
-            --primary-blue: #007bff;
-            --secondary-dark: #1f2937;
-            --accent-green: #28a745;
-            --light-bg: #f8f9fa;
+            --primary-orange: #FF8C00; /* Dark Orange */
+            --secondary-black: #1A1A1A; /* Near Black */
+            --accent-light-orange: #FFB347; /* Lighter Orange for accents */
+            --light-bg: #F8F8F8; /* Light Grey background */
+            --dark-text: #333333;
+            --light-text: #F0F0F0;
         }
 
         body {
             font-family: 'Inter', sans-serif;
             background-color: var(--light-bg);
-            color: var(--secondary-dark);
+            color: var(--dark-text);
             line-height: 1.6;
         }
 
@@ -28,6 +30,7 @@
         .hero-subtitle { animation: slideInLeft 1s ease-out 0.2s forwards; }
         .hero-text { animation: fadeIn 1s ease-out 0.4s forwards; }
         .hero-buttons { animation: fadeIn 1s ease-out 0.6s forwards; }
+        .hero-image { animation: fadeInScale 1s ease-out 0.8s forwards; }
 
         @keyframes slideInLeft {
             from { opacity: 0; transform: translateX(-50px); }
@@ -36,6 +39,10 @@
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
+        }
+        @keyframes fadeInScale {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
         }
 
         /* Scroll reveal */
@@ -79,13 +86,18 @@
             transform: translateX(0);
         }
 
-        /* These @apply lines only work if you later compile Tailwind –
-            safe to ignore if you're just using the CDN. */
         .nav-link {
-            @apply text-gray-700 hover:text-primary-blue inline-flex items-center px-1 pt-1 text-sm font-medium border-b-2 border-transparent hover:border-primary-blue transition duration-150;
+            @apply text-gray-700 hover:text-primary-orange inline-flex items-center px-1 pt-1 text-sm font-medium border-b-2 border-transparent hover:border-primary-orange transition duration-150;
         }
         .footer-link {
-            @apply text-gray-400 hover:text-white transition duration-300 flex items-center mb-2 sm:mb-0;
+            @apply text-gray-400 hover:text-light-bg transition duration-300 flex items-center mb-2 sm:mb-0;
+        }
+
+        /* Custom texture/pattern background */
+        .textured-bg {
+            background-image: url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%239C92AC" fill-opacity="0.1"%3E%3Cpath d="M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6zm30 30v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');
+            background-size: 30px 30px; /* Adjust size for desired density */
+            background-repeat: repeat;
         }
     </style>
 </head>
@@ -95,13 +107,14 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16 items-center">
                 <div class="flex-shrink-0">
-                    <span class="text-2xl font-extrabold text-[var(--primary-blue)]">S. S.</span>
+                    <span class="text-2xl font-extrabold text-[var(--primary-orange)]">S. S.</span>
                 </div>
                 <div class="space-x-4 sm:space-x-8 text-sm font-medium">
                     <a href="#home" class="nav-link">Home</a>
+                    <a href="#projects" class="nav-link">Projects</a>
                     <a href="#contribute" class="nav-link">Contribution</a>
                     <a href="#education" class="nav-link">Education</a>
-                    <a href="#experience" class="nav-link">Projects</a>
+                    <a href="#skills-section" class="nav-link">Skills</a>
                     <a href="#values" class="nav-link">Core Values</a>
                     <a href="#contact" class="nav-link">Contact</a>
                 </div>
@@ -112,47 +125,15 @@
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
 
         <script>
-            // What I can contribute (kept general, suitable for marketing internship)
             const contributionData = [
-                {
-                    title: "Market Segmentation Support",
-                    icon: "layers-3",
-                    color: "text-blue-600",
-                    description: "Assist in segmenting customers based on demographics, behaviour and needs to support targeted campaigns."
-                },
-                {
-                    title: "Branding & Positioning Support",
-                    icon: "flag",
-                    color: "text-green-600",
-                    description: "Contribute ideas and research inputs to strengthen brand positioning and communication."
-                },
-                {
-                    title: "Digital Outreach Support",
-                    icon: "share-2",
-                    color: "text-indigo-600",
-                    description: "Support social and digital initiatives through content inputs, basic analysis and execution support."
-                },
-                {
-                    title: "Basic Financial & ESG Analysis",
-                    icon: "bar-chart-3",
-                    color: "text-rose-600",
-                    description: "Use Excel-based ratio and regression analysis to interpret performance metrics and draw simple insights."
-                },
-                {
-                    title: "Presentation & Documentation",
-                    icon: "monitor-play",
-                    color: "text-yellow-600",
-                    description: "Prepare clear PPTs and documents that summarise analysis, findings and recommendations."
-                },
-                {
-                    title: "Reliable Team Support",
-                    icon: "users",
-                    color: "text-purple-600",
-                    description: "Provide dependable support on assigned tasks, coordinate with team members and meet deadlines."
-                }
+                { title: "Market Segmentation Support", icon: "layers-3", color: "text-orange-500", description: "Assist in segmenting customers based on demographics, behaviour and needs to support targeted campaigns." },
+                { title: "Branding & Positioning Support", icon: "flag", color: "text-amber-500", description: "Contribute ideas and research inputs to strengthen brand positioning and communication." },
+                { title: "Digital Outreach Support", icon: "share-2", color: "text-red-500", description: "Support social and digital initiatives through content inputs, basic analysis and execution support." },
+                { title: "Basic Financial & ESG Analysis", icon: "bar-chart-3", color: "text-yellow-600", description: "Use Excel-based ratio and regression analysis to interpret performance metrics and draw simple insights." },
+                { title: "Presentation & Documentation", icon: "monitor-play", color: "text-lime-600", description: "Prepare clear PPTs and documents that summarise analysis, findings and recommendations." },
+                { title: "Reliable Team Support", icon: "users", color: "text-teal-600", description: "Provide dependable support on assigned tasks, coordinate with team members and meet deadlines." }
             ];
 
-            // Core values (can stay from earlier version)
             const coreValuesData = [
                 { title: "Hard Work", icon: "hammer" },
                 { title: "Honesty", icon: "hand-heart" },
@@ -165,39 +146,13 @@
                 { title: "Positive Attitude", icon: "smile-plus" }
             ];
 
-            // EDUCATION from new resume
             const educationData = [
-                {
-                    degree: "Master of Business Administration (MBA)",
-                    specialization: "Marketing",
-                    institution: "Amrita Vishwa Vidyapeetham, Coimbatore",
-                    period: "2025 – 2027",
-                    details: "Pursuing MBA with focus on Marketing; seeking internship opportunity at Ryewalk."
-                },
-                {
-                    degree: "Bachelor of Commerce (B.Com.)",
-                    specialization: "CGPA / Percentage: 73.5",
-                    institution: "Gobi Arts & Science College, Gobichettipalayam",
-                    period: "2021 – 2024",
-                    details: "Built strong base in commerce, accounting and finance."
-                },
-                {
-                    degree: "HSC (State Board) – Commerce with Business Statistics",
-                    specialization: "Percentage: 92.5",
-                    institution: "SVN Matric Higher Secondary School",
-                    period: "2021",
-                    details: null
-                },
-                {
-                    degree: "SSC (State Board)",
-                    specialization: "Percentage: 89",
-                    institution: "SVN Matric Higher Secondary School",
-                    period: "2019",
-                    details: null
-                }
+                { degree: "Master of Business Administration (MBA)", specialization: "Marketing", institution: "Amrita Vishwa Vidyapeetham, Coimbatore", period: "2025 – 2027", details: "Pursuing MBA with focus on Marketing; seeking internship opportunity at Ryewalk." },
+                { degree: "Bachelor of Commerce (B.Com.)", specialization: "CGPA / Percentage: 73.5", institution: "Gobi Arts & Science College, Gobichettipalayam", period: "2021 – 2024", details: "Built strong base in commerce, accounting and finance." },
+                { degree: "HSC (State Board) – Commerce with Business Statistics", specialization: "Percentage: 92.5", institution: "SVN Matric Higher Secondary School", period: "2021", details: null },
+                { degree: "SSC (State Board)", specialization: "Percentage: 89", institution: "SVN Matric Higher Secondary School", period: "2019", details: null }
             ];
 
-            // PROJECTS from new resume
             const projectData = [
                 {
                     type: "Academic Project",
@@ -237,23 +192,12 @@
                 }
             ];
 
-            // Achievements & extracurriculars
             const achievementData = [
-                {
-                    title: "Cleared SSC (Staff Selection Commission) GD Exam",
-                    icon: "check-circle-2"
-                },
-                {
-                    title: "Member – SSL (Social Service League)",
-                    icon: "heart-handshake"
-                },
-                {
-                    title: "Scouts & Guides – Attended camps up to Dwitya Sopan",
-                    icon: "tent-tree"
-                }
+                { title: "Cleared SSC (Staff Selection Commission) GD Exam", icon: "check-circle-2" },
+                { title: "Member – SSL (Social Service League)", icon: "heart-handshake" },
+                { title: "Scouts & Guides – Attended camps up to Dwitya Sopan", icon: "tent-tree" }
             ];
 
-            // Skills & hobbies
             const skillsList = [
                 "Creativity and adaptability",
                 "Calm and active listening",
@@ -272,71 +216,42 @@
         <section id="home" class="py-16 sm:py-24 bg-white rounded-3xl shadow-2xl mb-16 overflow-hidden">
             <div class="lg:grid lg:grid-cols-12 lg:gap-12 p-6 sm:p-12 items-center">
                 <div class="lg:col-span-7 space-y-6">
-                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-[var(--secondary-dark)] opacity-0 hero-title">
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-[var(--secondary-black)] opacity-0 hero-title">
                         Sadhasivam
                     </h1>
-                    <h2 class="text-xl sm:text-2xl font-semibold text-[var(--primary-blue)] opacity-0 hero-subtitle">
+                    <h2 class="text-xl sm:text-2xl font-semibold text-[var(--primary-orange)] opacity-0 hero-subtitle">
                         Aspiring Marketing Intern | MBA (Marketing)
                     </h2>
-                    <p class="mt-4 text-lg text-gray-600 opacity-0 hero-text">
+                    <p class="mt-4 text-lg text-gray-700 opacity-0 hero-text">
                         Objective: To obtain a Marketing internship at Ryewalk where I can contribute to market segmentation,
                         branding and digital outreach initiatives while supporting the company’s go-to-market positioning through
                         impactful marketing artifacts and campaigns. Eager to contribute by being a part of the company.
                     </p>
                     <div class="flex flex-wrap gap-4 mt-8 opacity-0 hero-buttons">
                         <a id="linkedin-link-home" href="https://www.linkedin.com/in/sadha-sivam-79833736a" target="_blank"
-                           class="flex items-center px-8 py-3 border border-transparent text-base font-medium rounded-full shadow-lg text-white bg-[var(--primary-blue)] hover:bg-blue-700 transition duration-300 transform hover:scale-105">
+                           class="flex items-center px-8 py-3 border border-transparent text-base font-medium rounded-full shadow-lg text-white bg-[var(--primary-orange)] hover:bg-orange-700 transition duration-300 transform hover:scale-105">
                             Connect on LinkedIn <i data-lucide="linkedin" class="w-5 h-5 ml-2"></i>
                         </a>
                         <a href="mailto:sadhasivamesh8@gmail.com"
-                           class="flex items-center px-6 py-3 rounded-full border border-gray-300 text-sm font-medium text-gray-700 hover:bg-gray-50 transition">
-                            <i data-lucide="mail" class="w-4 h-4 mr-2"></i> sadhasivamesh8@gmail.com
+                           class="flex items-center px-6 py-3 rounded-full border border-gray-300 text-sm font-medium text-gray-700 hover:bg-gray-100 transition">
+                            <i data-lucide="mail" class="w-4 h-4 mr-2 text-[var(--primary-orange)]"></i> sadhasivamesh8@gmail.com
                         </a>
                     </div>
                 </div>
 
-                <div class="mt-10 lg:mt-0 lg:col-span-5 flex justify-center items-center opacity-0 hero-text" style="animation-delay: 0.8s;">
-                    <div class="w-64 h-64 sm:w-80 sm:h-80 bg-[var(--light-bg)] rounded-3xl shadow-xl flex items-center justify-center border-4 border-[var(--accent-green)] transform rotate-2 overflow-hidden">
-                        <img src="https://i.ibb.co/C07Bf5L/IMG-20240728-WA0000.jpg" alt="Sadhasivam" class="w-full h-full object-cover rounded-3xl -rotate-2">
+                <div class="mt-10 lg:mt-0 lg:col-span-5 flex justify-center items-center hero-image">
+                    <div class="w-64 h-64 sm:w-80 sm:h-80 bg-[var(--light-bg)] rounded-3xl shadow-xl flex items-center justify-center border-4 border-[var(--primary-orange)] transform rotate-2 overflow-hidden">
+                        <img src="https://github.com/sadhasivanesh/Sadhasivam/blob/b37c16535acc939e544a288e57a4906409bcb6a6/WhatsApp%20Image%202025-11-24%20at%2022.01.07_202c21c4.jpg?raw=true" alt="Sadhasivam" class="w-full h-full object-cover rounded-3xl -rotate-2">
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="contribute" class="py-16">
-            <h3 class="text-4xl font-extrabold text-[var(--secondary-dark)] text-center mb-4 reveal">
-                What I Can Contribute
-            </h3>
-            <p class="text-xl text-gray-600 text-center max-w-4xl mx-auto mb-16 reveal" style="transition-delay: 0.1s;">
-                Based on my academic projects and experience, I can support your marketing and analysis initiatives from day one.
-            </p>
-            <div id="contribute-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                </div>
-        </section>
-
-        <section id="education" class="py-16 bg-white rounded-3xl shadow-xl mt-16 p-6 sm:p-12">
-            <h3 class="text-4xl font-extrabold text-[var(--secondary-dark)] text-center mb-4 reveal">
-                Education
-            </h3>
-            <p class="text-xl text-gray-600 text-center max-w-4xl mx-auto mb-16 reveal" style="transition-delay: 0.1s;">
-                A strong academic foundation in business, commerce and marketing.
-            </p>
-
-            <div id="education-timeline" class="space-y-8 max-w-4xl mx-auto">
-                </div>
-
-            <h4 class="text-2xl font-bold text-[var(--secondary-dark)] mt-16 mb-8 reveal">
-                Achievements & Extra-Curricular Activities
-            </h4>
-            <div id="achievements-grid" class="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-4xl mx-auto">
-                </div>
-        </section>
-
-        <section id="experience" class="py-16">
-            <h3 class="text-4xl font-extrabold text-[var(--secondary-dark)] text-center mb-4 reveal">
+        <section id="projects" class="py-16">
+            <h3 class="text-4xl font-extrabold text-[var(--secondary-black)] text-center mb-4 reveal">
                 Projects & Applied Learning
             </h3>
-            <p class="text-xl text-gray-600 text-center max-w-4xl mx-auto mb-16 reveal" style="transition-delay: 0.1s;">
+            <p class="text-xl text-gray-700 text-center max-w-4xl mx-auto mb-16 reveal" style="transition-delay: 0.1s;">
                 Key projects where I practised financial analysis, ESG evaluation and marketing thinking.
             </p>
 
@@ -344,25 +259,54 @@
                 </div>
         </section>
 
-        <section id="skills-section" class="py-16 bg-white rounded-3xl shadow-xl mt-16 p-6 sm:p-12">
-            <h3 class="text-4xl font-extrabold text-[var(--secondary-dark)] text-center mb-4 reveal">
+        <section id="contribute" class="py-16 textured-bg rounded-3xl mt-16 p-6 sm:p-12">
+            <h3 class="text-4xl font-extrabold text-[var(--secondary-black)] text-center mb-4 reveal">
+                What I Can Contribute
+            </h3>
+            <p class="text-xl text-gray-700 text-center max-w-4xl mx-auto mb-16 reveal" style="transition-delay: 0.1s;">
+                Based on my academic projects and experience, I can support your marketing and analysis initiatives from day one.
+            </p>
+            <div id="contribute-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                </div>
+        </section>
+
+        <section id="education" class="py-16 bg-white rounded-3xl shadow-xl mt-16 p-6 sm:p-12">
+            <h3 class="text-4xl font-extrabold text-[var(--secondary-black)] text-center mb-4 reveal">
+                Education
+            </h3>
+            <p class="text-xl text-gray-700 text-center max-w-4xl mx-auto mb-16 reveal" style="transition-delay: 0.1s;">
+                A strong academic foundation in business, commerce and marketing.
+            </p>
+
+            <div id="education-timeline" class="space-y-8 max-w-4xl mx-auto">
+                </div>
+
+            <h4 class="text-2xl font-bold text-[var(--secondary-black)] mt-16 mb-8 reveal">
+                Achievements & Extra-Curricular Activities
+            </h4>
+            <div id="achievements-grid" class="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-4xl mx-auto">
+                </div>
+        </section>
+
+        <section id="skills-section" class="py-16 textured-bg rounded-3xl shadow-xl mt-16 p-6 sm:p-12">
+            <h3 class="text-4xl font-extrabold text-[var(--secondary-black)] text-center mb-4 reveal">
                 Skills & Personal Interests
             </h3>
-            <p class="text-xl text-gray-600 text-center max-w-4xl mx-auto mb-16 reveal" style="transition-delay: 0.1s;">
+            <p class="text-xl text-gray-700 text-center max-w-4xl mx-auto mb-16 reveal" style="transition-delay: 0.1s;">
                 Personal strengths and interests that support my performance as a marketing intern.
             </p>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-4xl mx-auto">
                 <div class="reveal">
                     <h4 class="text-xl font-semibold mb-4 flex items-center">
-                        <i data-lucide="sparkles" class="w-5 h-5 mr-2 text-[var(--primary-blue)]"></i> Skills
+                        <i data-lucide="sparkles" class="w-5 h-5 mr-2 text-[var(--primary-orange)]"></i> Skills
                     </h4>
                     <ul id="skills-list" class="list-disc list-inside space-y-2 text-gray-700">
                         </ul>
                 </div>
                 <div class="reveal" style="transition-delay: 0.1s;">
                     <h4 class="text-xl font-semibold mb-4 flex items-center">
-                        <i data-lucide="smile" class="w-5 h-5 mr-2 text-[var(--accent-green)]"></i> Hobbies
+                        <i data-lucide="smile" class="w-5 h-5 mr-2 text-[var(--accent-light-orange)]"></i> Hobbies
                     </h4>
                     <ul id="hobbies-list" class="list-disc list-inside space-y-2 text-gray-700">
                         </ul>
@@ -371,10 +315,10 @@
         </section>
 
         <section id="values" class="py-16 bg-white rounded-3xl shadow-xl mt-16 p-6 sm:p-12">
-            <h3 class="text-4xl font-extrabold text-[var(--secondary-dark)] text-center mb-4 reveal">
+            <h3 class="text-4xl font-extrabold text-[var(--secondary-black)] text-center mb-4 reveal">
                 My Core Values
             </h3>
-            <p class="text-xl text-gray-600 text-center max-w-4xl mx-auto mb-16 reveal" style="transition-delay: 0.1s;">
+            <p class="text-xl text-gray-700 text-center max-w-4xl mx-auto mb-16 reveal" style="transition-delay: 0.1s;">
                 These values guide how I work, learn and collaborate with others.
             </p>
             <div id="values-grid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6">
@@ -383,7 +327,7 @@
 
     </main>
 
-    <footer id="contact" class="bg-[var(--secondary-dark)] mt-16 py-12">
+    <footer id="contact" class="bg-[var(--secondary-black)] mt-16 py-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 reveal">
             <div class="text-center space-y-4">
                 <h4 class="text-3xl font-bold text-white">Let’s Connect</h4>
@@ -424,9 +368,9 @@
                 <div class="p-6 bg-white rounded-xl animated-card reveal fade-in-up" data-delay="${index * 100}">
                     <div class="flex items-start space-x-4 mb-3">
                         <i data-lucide="${item.icon}" class="w-8 h-8 ${item.color} flex-shrink-0"></i>
-                        <h4 class="text-xl font-bold text-[var(--secondary-dark)]">${item.title}</h4>
+                        <h4 class="text-xl font-bold text-[var(--secondary-black)]">${item.title}</h4>
                     </div>
-                    <p class="text-gray-600 text-sm">${item.description}</p>
+                    <p class="text-gray-700 text-sm">${item.description}</p>
                 </div>
             `).join("");
         };
@@ -435,8 +379,8 @@
             const el = document.getElementById("values-grid");
             el.innerHTML = coreValuesData.map((item, index) => `
                 <div class="flex flex-col items-center justify-center p-4 bg-[var(--light-bg)] rounded-lg text-center animated-card reveal fade-in-up" data-delay="${index * 50}">
-                    <i data-lucide="${item.icon}" class="w-8 h-8 text-[var(--primary-blue)] mb-2"></i>
-                    <span class="text-sm font-medium text-[var(--secondary-dark)]">${item.title}</span>
+                    <i data-lucide="${item.icon}" class="w-8 h-8 text-[var(--primary-orange)] mb-2"></i>
+                    <span class="text-sm font-medium text-[var(--secondary-black)]">${item.title}</span>
                 </div>
             `).join("");
         };
@@ -445,14 +389,14 @@
             const el = document.getElementById("education-timeline");
             el.innerHTML = educationData.map((item, index) => `
                 <div class="flex items-start reveal slide-in-right" data-delay="${index * 150}">
-                    <div class="flex-shrink-0 w-28 text-sm font-medium text-[var(--primary-blue)] mr-6 mt-1">
+                    <div class="flex-shrink-0 w-28 text-sm font-medium text-[var(--primary-orange)] mr-6 mt-1">
                         ${item.period}
                     </div>
-                    <div class="flex-1 border-l-4 border-[var(--primary-blue)] pl-6 pb-6">
-                        <h4 class="text-lg font-bold text-[var(--secondary-dark)]">${item.degree}</h4>
+                    <div class="flex-1 border-l-4 border-[var(--primary-orange)] pl-6 pb-6">
+                        <h4 class="text-lg font-bold text-[var(--secondary-black)]">${item.degree}</h4>
                         <p class="text-base text-gray-700">${item.institution}</p>
-                        ${item.specialization ? `<p class="text-sm text-[var(--accent-green)] font-semibold mt-1">${item.specialization}</p>` : ""}
-                        ${item.details ? `<p class="text-sm text-gray-500 mt-1">${item.details}</p>` : ""}
+                        ${item.specialization ? `<p class="text-sm text-[var(--accent-light-orange)] font-semibold mt-1">${item.specialization}</p>` : ""}
+                        ${item.details ? `<p class="text-sm text-gray-600 mt-1">${item.details}</p>` : ""}
                     </div>
                 </div>
             `).join("");
@@ -462,7 +406,7 @@
             const el = document.getElementById("achievements-grid");
             el.innerHTML = achievementData.map((item, index) => `
                 <div class="p-4 bg-[var(--light-bg)] rounded-xl animated-card flex items-start space-x-3 reveal fade-in-up" data-delay="${index * 120}">
-                    <i data-lucide="${item.icon}" class="w-6 h-6 text-[var(--primary-blue)] mt-1"></i>
+                    <i data-lucide="${item.icon}" class="w-6 h-6 text-[var(--primary-orange)] mt-1"></i>
                     <p class="text-sm text-gray-700">${item.title}</p>
                 </div>
             `).join("");
@@ -474,11 +418,11 @@
                 <div class="bg-white rounded-2xl shadow-md p-6 animated-card reveal fade-in-up" data-delay="${index * 150}">
                     <div class="flex items-start justify-between">
                         <div>
-                            <p class="text-xs uppercase tracking-wide text-[var(--primary-blue)] font-semibold">${item.type}</p>
-                            <h4 class="text-xl font-bold text-[var(--secondary-dark)] mt-1">${item.title}</h4>
-                            <p class="text-sm text-gray-600">${item.company} &middot; ${item.period}</p>
+                            <p class="text-xs uppercase tracking-wide text-[var(--primary-orange)] font-semibold">${item.type}</p>
+                            <h4 class="text-xl font-bold text-[var(--secondary-black)] mt-1">${item.title}</h4>
+                            <p class="text-sm text-gray-700">${item.company} &middot; ${item.period}</p>
                         </div>
-                        <i data-lucide="${item.icon}" class="w-8 h-8 text-[var(--primary-blue)] ml-4 flex-shrink-0"></i>
+                        <i data-lucide="${item.icon}" class="w-8 h-8 text-[var(--primary-orange)] ml-4 flex-shrink-0"></i>
                     </div>
                     <ul class="mt-4 list-disc list-inside space-y-1 text-sm text-gray-700">
                         ${item.description.map(d => `<li>${d}</li>`).join("")}
@@ -503,7 +447,8 @@
                         setTimeout(() => {
                             entry.target.classList.add("visible");
                         }, delay);
-                        observer.unobserve(entry.target);
+                        // Optional: Unobserve after first visibility
+                        // observer.unobserve(entry.target);
                     }
                 });
             }, { threshold: 0.15 });
@@ -518,8 +463,8 @@
             renderAchievements();
             renderProjects();
             renderSkillsAndHobbies();
-            setupRevealOnScroll();
-            refreshIcons();
+            refreshIcons(); // Ensure icons are created after dynamic content is added
+            setupRevealOnScroll(); // Setup scroll observer after all content is rendered
         });
     </script>
 

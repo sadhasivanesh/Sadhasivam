@@ -1,334 +1,204 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sadhasivam - Market Research Portfolio</title>
-    <style>
-        /* --- General Styling & Palette --- */
-        :root {
-            --color-primary: #004d40; /* Teal/Charcoal Deep Green */
-            --color-secondary: #007bff; /* Navy Blue Accent */
-            --color-text: #333333; /* Charcoal */
-            --font-main: 'Helvetica Neue', Arial, sans-serif;
-        }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sadhasivam | Market Research Intern Portfolio</title>
 
-        body {
-            font-family: var(--font-main);
-            color: var(--color-text);
-            margin: 0;
-            padding: 0;
-            background-color: #ffffff;
-            line-height: 1.5;
-            font-size: 11pt;
-        }
+<style>
+    :root {
+        --bg: #f8f9fb;
+        --card: #ffffff;
+        --text: #1a1a1a;
+        --accent: #2563eb;
+        --subtle: #6b7280;
+        --radius: 18px;
+        --shadow: 0 8px 22px rgba(0,0,0,0.08);
+        font-family: "Inter", sans-serif;
+    }
 
-        /* --- Page & Print Settings for Resume (Page 1) --- */
-        .page {
-            width: 8.5in;
-            height: 11in;
-            padding: 0.75in;
-            margin: 0 auto;
-            box-sizing: border-box;
-            background: #ffffff;
-            page-break-after: always;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
+    body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--text);
+        animation: fadeIn 1.2s ease-in-out;
+    }
 
-        /* Prevent page break after the last page */
-        .page:last-child {
-            page-break-after: avoid;
-        }
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
 
-        h1 {
-            color: var(--color-primary);
-            font-size: 24pt;
-            margin-bottom: 0.1em;
-            text-transform: uppercase;
-        }
+    .container {
+        max-width: 900px;
+        margin: auto;
+        padding: 40px 20px;
+    }
 
-        h2 {
-            font-size: 14pt;
-            color: var(--color-primary);
-            border-bottom: 2px solid var(--color-secondary);
-            padding-bottom: 4px;
-            margin-top: 1.5em;
-            text-transform: uppercase;
-        }
+    .card {
+        background: var(--card);
+        padding: 35px;
+        margin-bottom: 30px;
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        transition: transform 0.25s ease;
+    }
 
-        h3 {
-            font-size: 12pt;
-            color: var(--color-text);
-            margin: 0.5em 0 0.2em 0;
-        }
+    .card:hover {
+        transform: translateY(-5px);
+    }
 
-        /* --- Resume Specific Layout (Two-Column) --- */
-        .resume-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-            margin-bottom: 15px;
-        }
+    h1, h2 {
+        margin: 0 0 15px 0;
+    }
 
-        .resume-main-content {
-            display: grid;
-            grid-template-columns: 70% 30%;
-            gap: 20px;
-        }
+    h1 {
+        font-size: 42px;
+        color: var(--accent);
+        font-weight: 700;
+        letter-spacing: -1px;
+    }
 
-        .contact-info, .objective-box {
-            background-color: #f8f8f8;
-            padding: 10px;
-            border-left: 4px solid var(--color-secondary);
-            margin-bottom: 15px;
-        }
+    h2 {
+        margin-top: 25px;
+        font-size: 24px;
+        color: var(--accent);
+    }
 
-        .contact-info p {
-            margin: 0.2em 0;
-        }
+    p, li {
+        line-height: 1.6;
+        font-size: 16px;
+    }
 
-        .objective-box {
-            font-style: italic;
-            font-size: 10pt;
-        }
+    ul {
+        padding-left: 20px;
+    }
 
-        .project-item {
-            margin-bottom: 1em;
-            border-left: 2px solid var(--color-primary);
-            padding-left: 10px;
-        }
+    .section-title {
+        font-weight: 600;
+        margin-bottom: 8px;
+    }
 
-        .project-item strong {
-            display: block;
-            margin-bottom: 0.2em;
-        }
+    .contact a {
+        color: var(--accent);
+        text-decoration: none;
+        font-weight: 500;
+    }
 
-        .skill-list {
-            padding-left: 0;
-            list-style: none;
-        }
+    .tag {
+        display: inline-block;
+        background: #e8eeff;
+        color: var(--accent);
+        padding: 6px 12px;
+        margin: 4px;
+        border-radius: 50px;
+        font-size: 14px;
+        animation: pop 0.4s ease;
+    }
 
-        .skill-list li {
-            margin-bottom: 5px;
-            border-bottom: 1px dashed #eee;
-            padding-bottom: 3px;
-        }
+    @keyframes pop {
+        from { transform: scale(0.8); opacity: 0; }
+        to { transform: scale(1); opacity: 1; }
+    }
 
-        /* --- Portfolio Specific Layout --- */
-        .portfolio-header h1 {
-            border-bottom: 4px solid var(--color-secondary);
-            padding-bottom: 10px;
-            margin-top: 0;
-        }
-
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            margin-top: 15px;
-        }
-
-        .portfolio-section {
-            padding: 15px;
-            border: 1px solid #ddd;
-            background-color: #fdfdfd;
-        }
-
-        .portfolio-section h3 {
-            color: var(--color-secondary);
-        }
-    </style>
+</style>
 </head>
+
 <body>
 
-    <div class="page" id="resume">
-        <header class="resume-header">
-            <div>
-                [cite_start]<h1>SADHASIVAM [cite: 2]</h1>
-                <p><strong>Market Research and Financial Analysis</strong></p>
-            </div>
-            <div style="text-align: right;">
-                [cite_start]<p style="color: var(--color-primary); font-weight: bold; font-size: 10pt;">Seeking a Market Research Intern position at Zoho [cite: 5]</p>
-            </div>
-        </header>
+<div class="container">
 
-        <div class="contact-info">
-            [cite_start]<p>📞 +91 98942 29560 [cite: 3] | [cite_start]📧 sadhasivanesh8@gmail.com [cite: 3] | [cite_start]🔗 <a href="https://www.linkedin.com/in/sadha-sivam-79833736a" style="color: var(--color-secondary);">linkedin.com/in/sadha-sivam-79833736a</a> [cite: 4]</p>
-        </div>
+    <!-- Header Section -->
+    <div class="card">
+        <h1>Sadhasivam</h1>
+        <p class="contact">
+            📞 ‪+91 98942 29560‬<br>
+            📧 <a href="mailto:sadhasivanesh8@gmail.com">sadhasivanesh8@gmail.com</a><br>
+            🔗 <a href="https://www.linkedin.com/in/sadha-sivam-79833736a" target="_blank">LinkedIn Profile</a>
+        </p>
 
-        <div class="objective-box">
-            [cite_start]<p><strong>PROFESSIONAL OBJECTIVE:</strong> Seeking a Market Research Intern position at Zoho to apply analytical skills, conduct market/competitor studies, and contribute insights that support data-driven product and marketing decisions[cite: 5].</p>
-        </div>
-
-        <div class="resume-main-content">
-            <section class="left-column">
-                [cite_start]<h2>📊 PROJECTS & DATA ANALYSIS EXPERIENCE [cite: 11]</h2>
-
-                <div class="project-item">
-                    [cite_start]<h3>ESG Performance Analysis (2020-2024 Data) [cite: 16]</h3>
-                    <ul>
-                        [cite_start]<li>Conducted a data-driven ESG performance analysis of **50 Indian companies**[cite: 16].</li>
-                        [cite_start]<li>Utilized **multiple and simple regression models** to identify how environmental and organizational factors influence financial performance (ROA & ROE)[cite: 16].</li>
-                    </ul>
-                </div>
-
-                <div class="project-item">
-                    [cite_start]<h3>Ratio Analysis: India Motor Parts & Accessories Ltd. (IMPAL) [cite: 12]</h3>
-                    <ul>
-                        [cite_start]<li>**Objective:** Evaluated the company's financial performance over a **five-year period (2021-2025)** using detailed ratio analysis[cite: 13, 14].</li>
-                        [cite_start]<li>**Analysis:** Performed detailed analysis of **liquidity, profitability, solvency, and efficiency ratios**[cite: 14].</li>
-                        [cite_start]<li>**Outcome:** Identified declining capital efficiency and cost pressure trends, leading to strategic insights on improving cost optimization and asset utilization[cite: 15].</li>
-                    </ul>
-                </div>
-
-                <div class="project-item">
-                    [cite_start]<h3>Brand Positioning and Marketing Case Studies [cite: 17, 18]</h3>
-                    <ul>
-                        [cite_start]<li>Completed intensive case studies on **Gillette and Barbie**, focusing on **brand positioning and gender-based marketing**[cite: 18].</li>
-                        [cite_start]<li>Gained marketing knowledge through case discussions, presentations, and activities[cite: 17].</li>
-                    </ul>
-                </div>
-
-                [cite_start]<h2>⭐ ACHIEVEMENTS & ENGAGEMENT [cite: 19, 20]</h2>
-                <ul class="skill-list">
-                    [cite_start]<li>Cleared **SSC (Staff Selection Commission) GD exam**[cite: 19].</li>
-                    [cite_start]<li>Attended camps up to **dwitya sopan in Scouts and Guides**[cite: 20].</li>
-                    [cite_start]<li>Part of **SSL (Social Service League)**[cite: 19].</li>
-                </ul>
-            </section>
-
-            <section class="right-column">
-                [cite_start]<h2>📚 EDUCATION [cite: 6]</h2>
-                <div style="margin-bottom: 1em;">
-                    [cite_start]<h3>Master of Business Administration (MBA) [cite: 7]</h3>
-                    [cite_start]<p style="margin: 0;">Amrita Vishwa Vidyapeetham, Coimbatore [cite: 7]</p>
-                    [cite_start]<p style="margin: 0; font-size: 10pt;">Year 2025-2027 [cite: 7]</p>
-                </div>
-                <div style="margin-bottom: 1em;">
-                    [cite_start]<h3>Bachelor of Commerce (B.Com) [cite: 8]</h3>
-                    [cite_start]<p style="margin: 0;">Gobi Arts & Science College, Gobichettipalayam [cite: 8]</p>
-                    [cite_start]<p style="margin: 0; font-size: 10pt;">Year 2021-2024, **CGPA: 7.3** [cite: 8]</p>
-                </div>
-                <div style="font-size: 10pt;">
-                    <p style="margin: 0.5em 0 0.2em;">**Additional Academic Qualifications:**</p>
-                    <ul style="margin: 0; padding-left: 20px;">
-                        [cite_start]<li>HSC (State board) Commerce with business statistics, 92.5% (2021) [cite: 9]</li>
-                        [cite_start]<li>SSC (State board), 89% (2019) [cite: 10]</li>
-                    </ul>
-                </div>
-
-                [cite_start]<h2>🧠 SKILLS & COMPETENCIES [cite: 21]</h2>
-                <ul class="skill-list">
-                    [cite_start]<li>**Core Competencies:** Creativity and adaptability [cite: 22][cite_start], Calm and active listening [cite: 23][cite_start], Stress management[cite: 24].</li>
-                    [cite_start]<li>**Analytical:** Financial Ratio Analysis (Inferred from project [cite: 14][cite_start]), Regression Modeling (Simple & Multiple) (Inferred from project [cite: 16][cite_start]), Marketing Analysis (Brand Positioning) (Inferred from project [cite: 18]).</li>
-                </ul>
-
-                [cite_start]<h2>🗣️ LANGUAGES [cite: 33]</h2>
-                <ul class="skill-list">
-                    [cite_start]<li>English [cite: 34]</li>
-                    [cite_start]<li>Tamil (Native) [cite: 34]</li>
-                </ul>
-
-                [cite_start]<h2>🧘 INTERESTS (For cultural fit) [cite: 25]</h2>
-                <ul class="skill-list" style="font-size: 10pt;">
-                    [cite_start]<li>Playing chess [cite: 26]</li>
-                    [cite_start]<li>Travelling to forests [cite: 27]</li>
-                    [cite_start]<li>Meditation and mindfulness [cite: 28]</li>
-                    [cite_start]<li>Collecting numismatic treasures [cite: 29]</li>
-                    [cite_start]<li>Knowing the practices of people [cite: 30]</li>
-                </ul>
-            </section>
-        </div>
+        <h2>Objective</h2>
+        <p>
+            Seeking a Market Research Intern position at Zoho to apply analytical skills, conduct market and competitor
+            studies, and contribute insights that support data-driven product and marketing decisions.
+        </p>
     </div>
 
-    <div class="page" id="portfolio-1">
-        <header class="portfolio-header">
-            <h1>SADHASIVAM: MARKET RESEARCH & ANALYTICAL PORTFOLIO</h1>
-        </header>
-
-        <h2>INTRODUCTION & CORE CAPABILITIES</h2>
-        <div class="portfolio-grid">
-            <div class="portfolio-section">
-                <h3>Objective & Profile</h3>
-                [cite_start]<p>Seeking a Market Research Intern position at Zoho to apply analytical skills, conduct market/competitor studies, and contribute insights that support data-driven product and marketing decisions[cite: 5].</p>
-                [cite_start]<p><strong>Education:</strong> MBA (2025-2027) Amrita Vishwa Vidyapeetham [cite: 7][cite_start], B.Com (2021-2024) CGPA 7.3[cite: 8].</p>
-            </div>
-            <div class="portfolio-section">
-                <h3>Analytical & Soft Competencies</h3>
-                <ul style="padding-left: 15px;">
-                    [cite_start]<li>**Analytical Tools:** Financial Ratio Analysis, Regression Modeling (Inferred from projects [cite: 14, 16]).</li>
-                    [cite_start]<li>**Core Skills:** Creativity and adaptability [cite: 22][cite_start], Calm and active listening [cite: 23][cite_start], Stress management[cite: 24].</li>
-                    [cite_start]<li>**Engagement:** Cleared SSC GD exam [cite: 19][cite_start], Part of SSL[cite: 19].</li>
-                </ul>
-            </div>
-        </div>
-
-        [cite_start]<h2>📈 PROJECT DEEP DIVE I: ESG PERFORMANCE ANALYSIS (2020-2024 Data) [cite: 16]</h2>
-        <div class="portfolio-grid">
-            <div class="portfolio-section" style="grid-column: span 2;">
-                <p><strong>Focus:</strong> Identifying the influence of environmental and organizational factors on corporate financial performance.</p>
-            </div>
-            <div class="portfolio-section">
-                <h3>Methodology & Scope</h3>
-                <ul style="padding-left: 15px;">
-                    [cite_start]<li>**Sample Size:** Analysis covered **50 Indian companies**[cite: 16].</li>
-                    [cite_start]<li>**Data Period:** Used data spanning **2020-2024**[cite: 16].</li>
-                    [cite_start]<li>**Model Used:** Utilized **multiple and simple regression models** to quantify the influence of factors[cite: 16].</li>
-                </ul>
-            </div>
-            <div class="portfolio-section">
-                <h3>Outcome Variables & Findings</h3>
-                <ul style="padding-left: 15px;">
-                    [cite_start]<li>**Financial Metrics:** Focused on analyzing **Return on Assets (ROA)** and **Return on Equity (ROE)**[cite: 16].</li>
-                    <li>**Inferred Analytical Output:** Insights were drawn on how specific environmental and organizational variables impact the analyzed financial metrics (ROA & ROE).</li>
-                    <li>*(**Suggested Visual:** Placeholder for a simple data graphic illustrating regression results)*</li>
-                </ul>
-            </div>
-        </div>
+    <!-- Skills -->
+    <div class="card">
+        <h2>Skills</h2>
+        <span class="tag">Creativity & Adaptability</span>
+        <span class="tag">Calm & Active Listening</span>
+        <span class="tag">Stress Management</span>
     </div>
 
-    <div class="page" id="portfolio-2">
-        <header class="portfolio-header">
-            <h1>STRATEGIC & MARKETING INSIGHTS</h1>
-        </header>
+    <!-- Projects -->
+    <div class="card">
+        <h2>Projects</h2>
 
-        [cite_start]<h2>💰 PROJECT DEEP DIVE II: STRATEGIC RATIO ANALYSIS (IMPAL) [cite: 12]</h2>
-        <div class="portfolio-grid">
-            <div class="portfolio-section">
-                <h3>Analysis Scope & Tools</h3>
-                <ul style="padding-left: 15px;">
-                    [cite_start]<li>**Objective:** Evaluate company's financial performance over a **five-year period (2021-2025)**[cite: 13, 14].</li>
-                    [cite_start]<li>**Ratios Covered:** Detailed analysis of **liquidity, profitability, solvency, and efficiency ratios**[cite: 14].</li>
-                    [cite_start]<li>**Tool:** Employed **Excel-based financial analysis** to interpret key business metrics[cite: 14].</li>
-                </ul>
-            </div>
-            <div class="portfolio-section">
-                <h3>Key Findings & Strategic Insights</h3>
-                <ul style="padding-left: 15px;">
-                    [cite_start]<li>Identified a **declining capital efficiency trend**[cite: 15].</li>
-                    [cite_start]<li>Pinpointed areas of **cost pressure** within the company's operations[cite: 15].</li>
-                    [cite_start]<li>**Strategic Insight:** The outcome led to recommendations for improving **cost optimization and asset utilization**[cite: 15].</li>
-                    <li>*(**Suggested Visual:** Placeholder for a line chart template showing the trend of key ratios over the 5-year period)*</li>
-                </ul>
-            </div>
-        </div>
+        <p><strong>1. Ratio Analysis – India Motor Parts & Accessories Ltd. (IMPAL), 2025</strong></p>
+        <ul>
+            <li>Evaluated 5-year financial performance using liquidity, profitability, solvency & efficiency ratios.</li>
+            <li>Used Excel for detailed financial interpretation and performance metrics.</li>
+            <li>Identified decline in capital efficiency and highlighted cost optimization strategies.</li>
+        </ul>
 
-        <h2>💡 PROJECT DEEP DIVE III: BRAND POSITIONING CASE STUDIES</h2>
-        <div class="portfolio-grid">
-            <div class="portfolio-section" style="grid-column: span 2;">
-                <p><strong>Focus:</strong> Gaining essential knowledge in market positioning and segmentation for product analysis—critical for Market Research.</p>
-                <ul style="padding-left: 15px;">
-                    [cite_start]<li>**Marketing Foundation:** Gained comprehensive marketing knowledge through case discussions, presentations, and activities in Amrita School of Business[cite: 17].</li>
-                    [cite_start]<li>**Case Studies Completed:** Detailed analysis conducted on **Gillette and Barbie**[cite: 18].</li>
-                    [cite_start]<li>**Research Focus:** Analysis centered specifically on strategic **brand positioning** and methods of **gender-based marketing**[cite: 18].</li>
-                </ul>
-            </div>
-        </div>
+        <p><strong>2. ESG Regression Analysis (2020–2024)</strong></p>
+        <ul>
+            <li>Analyzed ESG performance of 50 Indian companies using multiple & simple regression models.</li>
+            <li>Studied environmental & organizational factors affecting ROA and ROE.</li>
+        </ul>
 
-        <footer style="text-align: center; margin-top: 50px; font-size: 9pt; color: #999;">
-            End of Portfolio Document
-        </footer>
+        <p><strong>3. Marketing Case Discussions</strong></p>
+        <ul>
+            <li>Participated in case discussions and presentations at Amrita School of Business.</li>
+        </ul>
+
+        <p><strong>4. Gillette & Barbie Case Studies</strong></p>
+        <ul>
+            <li>Explored brand positioning and gender-based marketing strategies.</li>
+        </ul>
     </div>
+
+    <!-- Achievements -->
+    <div class="card">
+        <h2>Achievements & Extra-Curricular</h2>
+        <ul>
+            <li>Cleared SSC GD exam</li>
+            <li>Active participant in Social Service League (SSL)</li>
+            <li>Completed Scouts & Guides camps up to Dwitya Sopan</li>
+        </ul>
+    </div>
+
+    <!-- Education -->
+    <div class="card">
+        <h2>Education</h2>
+        <ul>
+            <li><strong>MBA</strong>, Amrita Vishwa Vidyapeetham (2025–2027)</li>
+            <li><strong>B.Com</strong>, Gobi Arts & Science College (2021–2024), CGPA: 7.3</li>
+            <li><strong>HSC</strong> – Commerce with Business Statistics (2021) – 92.5%</li>
+            <li><strong>SSC</strong> (2019) – 89%</li>
+        </ul>
+    </div>
+
+    <!-- Hobbies -->
+    <div class="card">
+        <h2>Hobbies</h2>
+        <span class="tag">Chess</span>
+        <span class="tag">Forest Travel</span>
+        <span class="tag">Meditation</span>
+        <span class="tag">Numismatics</span>
+        <span class="tag">Studying Human Practices</span>
+    </div>
+
+    <!-- Languages -->
+    <div class="card">
+        <h2>Languages Known</h2>
+        <span class="tag">English</span>
+        <span class="tag">Tamil (Native)</span>
+    </div>
+
+</div>
 
 </body>
 </html>

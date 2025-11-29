@@ -3,470 +3,332 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sadhasivam | Marketing Internship Resume - New Look</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
-
+    <title>Sadhasivam - Market Research Portfolio</title>
     <style>
+        /* --- General Styling & Palette --- */
         :root {
-            --primary-orange: #FF8C00; /* Dark Orange */
-            --secondary-black: #1A1A1A; /* Near Black */
-            --accent-light-orange: #FFB347; /* Lighter Orange for accents */
-            --light-bg: #F8F8F8; /* Light Grey background */
-            --dark-text: #333333;
-            --light-text: #F0F0F0;
+            --color-primary: #004d40; /* Teal/Charcoal Deep Green */
+            --color-secondary: #007bff; /* Navy Blue Accent */
+            --color-text: #333333; /* Charcoal */
+            --font-main: 'Helvetica Neue', Arial, sans-serif;
         }
 
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--light-bg);
-            color: var(--dark-text);
-            line-height: 1.6;
+            font-family: var(--font-main);
+            color: var(--color-text);
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff;
+            line-height: 1.5;
+            font-size: 11pt;
         }
 
-        /* Hero animations */
-        .hero-title { animation: slideInLeft 1s ease-out forwards; }
-        .hero-subtitle { animation: slideInLeft 1s ease-out 0.2s forwards; }
-        .hero-text { animation: fadeIn 1s ease-out 0.4s forwards; }
-        .hero-buttons { animation: fadeIn 1s ease-out 0.6s forwards; }
-        .hero-image { animation: fadeInScale 1s ease-out 0.8s forwards; }
-
-        @keyframes slideInLeft {
-            from { opacity: 0; transform: translateX(-50px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        @keyframes fadeInScale {
-            from { opacity: 0; transform: scale(0.9); }
-            to { opacity: 1; transform: scale(1); }
+        /* --- Page & Print Settings for Resume (Page 1) --- */
+        .page {
+            width: 8.5in;
+            height: 11in;
+            padding: 0.75in;
+            margin: 0 auto;
+            box-sizing: border-box;
+            background: #ffffff;
+            page-break-after: always;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
 
-        /* Scroll reveal */
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.7s ease-out, transform 0.7s ease-out;
-        }
-        .reveal.visible {
-            opacity: 1;
-            transform: translateY(0);
+        /* Prevent page break after the last page */
+        .page:last-child {
+            page-break-after: avoid;
         }
 
-        .animated-card {
-            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-            box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-        }
-        .animated-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+        h1 {
+            color: var(--color-primary);
+            font-size: 24pt;
+            margin-bottom: 0.1em;
+            text-transform: uppercase;
         }
 
-        /* New animations */
-        .fade-in-up {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-        }
-        .fade-in-up.visible {
-            opacity: 1;
-            transform: translateY(0);
+        h2 {
+            font-size: 14pt;
+            color: var(--color-primary);
+            border-bottom: 2px solid var(--color-secondary);
+            padding-bottom: 4px;
+            margin-top: 1.5em;
+            text-transform: uppercase;
         }
 
-        .slide-in-right {
-            opacity: 0;
-            transform: translateX(20px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-        }
-        .slide-in-right.visible {
-            opacity: 1;
-            transform: translateX(0);
+        h3 {
+            font-size: 12pt;
+            color: var(--color-text);
+            margin: 0.5em 0 0.2em 0;
         }
 
-        .nav-link {
-            @apply text-gray-700 hover:text-primary-orange inline-flex items-center px-1 pt-1 text-sm font-medium border-b-2 border-transparent hover:border-primary-orange transition duration-150;
-        }
-        .footer-link {
-            @apply text-gray-400 hover:text-light-bg transition duration-300 flex items-center mb-2 sm:mb-0;
+        /* --- Resume Specific Layout (Two-Column) --- */
+        .resume-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 15px;
         }
 
-        /* Custom texture/pattern background */
-        .textured-bg {
-            background-image: url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%239C92AC" fill-opacity="0.1"%3E%3Cpath d="M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6zm30 30v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');
-            background-size: 30px 30px; /* Adjust size for desired density */
-            background-repeat: repeat;
+        .resume-main-content {
+            display: grid;
+            grid-template-columns: 70% 30%;
+            gap: 20px;
+        }
+
+        .contact-info, .objective-box {
+            background-color: #f8f8f8;
+            padding: 10px;
+            border-left: 4px solid var(--color-secondary);
+            margin-bottom: 15px;
+        }
+
+        .contact-info p {
+            margin: 0.2em 0;
+        }
+
+        .objective-box {
+            font-style: italic;
+            font-size: 10pt;
+        }
+
+        .project-item {
+            margin-bottom: 1em;
+            border-left: 2px solid var(--color-primary);
+            padding-left: 10px;
+        }
+
+        .project-item strong {
+            display: block;
+            margin-bottom: 0.2em;
+        }
+
+        .skill-list {
+            padding-left: 0;
+            list-style: none;
+        }
+
+        .skill-list li {
+            margin-bottom: 5px;
+            border-bottom: 1px dashed #eee;
+            padding-bottom: 3px;
+        }
+
+        /* --- Portfolio Specific Layout --- */
+        .portfolio-header h1 {
+            border-bottom: 4px solid var(--color-secondary);
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 15px;
+        }
+
+        .portfolio-section {
+            padding: 15px;
+            border: 1px solid #ddd;
+            background-color: #fdfdfd;
+        }
+
+        .portfolio-section h3 {
+            color: var(--color-secondary);
         }
     </style>
 </head>
-<body class="antialiased">
+<body>
 
-    <nav class="sticky top-0 z-50 bg-white shadow-lg border-b border-gray-100">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-16 items-center">
-                <div class="flex-shrink-0">
-                    <span class="text-2xl font-extrabold text-[var(--primary-orange)]">Portfolio</span>
-                </div>
-                <div class="space-x-4 sm:space-x-8 text-sm font-medium">
-                    <a href="#home" class="nav-link">Home</a>
-                    <a href="#projects" class="nav-link">Projects</a>
-                    <a href="#contribute" class="nav-link">Contribution</a>
-                    <a href="#education" class="nav-link">Education</a>
-                    <a href="#skills-section" class="nav-link">Skills</a>
-                    <a href="#values" class="nav-link">Core Values</a>
-                    <a href="#contact" class="nav-link">Contact</a>
-                </div>
+    <div class="page" id="resume">
+        <header class="resume-header">
+            <div>
+                [cite_start]<h1>SADHASIVAM [cite: 2]</h1>
+                <p><strong>Market Research and Financial Analysis</strong></p>
             </div>
+            <div style="text-align: right;">
+                [cite_start]<p style="color: var(--color-primary); font-weight: bold; font-size: 10pt;">Seeking a Market Research Intern position at Zoho [cite: 5]</p>
+            </div>
+        </header>
+
+        <div class="contact-info">
+            [cite_start]<p>📞 +91 98942 29560 [cite: 3] | [cite_start]📧 sadhasivanesh8@gmail.com [cite: 3] | [cite_start]🔗 <a href="https://www.linkedin.com/in/sadha-sivam-79833736a" style="color: var(--color-secondary);">linkedin.com/in/sadha-sivam-79833736a</a> [cite: 4]</p>
         </div>
-    </nav>
 
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-
-        <script>
-            const contributionData = [
-                { title: "Market Segmentation Support", icon: "layers-3", color: "text-orange-500", description: "Assist in segmenting customers based on demographics, behaviour and needs to support targeted campaigns." },
-                { title: "Branding & Positioning Support", icon: "flag", color: "text-amber-500", description: "Contribute ideas and research inputs to strengthen brand positioning and communication." },
-                { title: "Digital Outreach Support", icon: "share-2", color: "text-red-500", description: "Support social and digital initiatives through content inputs, basic analysis and execution support." },
-                { title: "Basic Financial & ESG Analysis", icon: "bar-chart-3", color: "text-yellow-600", description: "Use Excel-based ratio and regression analysis to interpret performance metrics and draw simple insights." },
-                { title: "Presentation & Documentation", icon: "monitor-play", color: "text-lime-600", description: "Prepare clear PPTs and documents that summarise analysis, findings and recommendations." },
-                { title: "Reliable Team Support", icon: "users", color: "text-teal-600", description: "Provide dependable support on assigned tasks, coordinate with team members and meet deadlines." }
-            ];
-
-            const coreValuesData = [
-                { title: "Hard Work", icon: "hammer" },
-                { title: "Honesty", icon: "hand-heart" },
-                { title: "Learning Mindset", icon: "brain-cog" },
-                { title: "Respect", icon: "user-round-check" },
-                { title: "Discipline", icon: "ruler" },
-                { title: "Team Support", icon: "users-round" },
-                { title: "Patience", icon: "hourglass" },
-                { title: "Curiosity", icon: "lightbulb" },
-                { title: "Positive Attitude", icon: "smile-plus" }
-            ];
-
-            const educationData = [
-                { degree: "Master of Business Administration (MBA)", specialization: "Marketing", institution: "Amrita Vishwa Vidyapeetham, Coimbatore", period: "2025 – 2027", details: "Pursuing MBA with focus on Marketing; seeking internship opportunity at Ryewalk." },
-                { degree: "Bachelor of Commerce (B.Com.)", specialization: "CGPA / Percentage: 73.5", institution: "Gobi Arts & Science College, Gobichettipalayam", period: "2021 – 2024", details: "Built strong base in commerce, accounting and finance." },
-                { degree: "HSC (State Board) – Commerce with Business Statistics", specialization: "Percentage: 92.5", institution: "SVN Matric Higher Secondary School", period: "2021", details: null },
-                { degree: "SSC (State Board)", specialization: "Percentage: 89", institution: "SVN Matric Higher Secondary School", period: "2019", details: null }
-            ];
-
-            const projectData = [
-                {
-                    type: "Academic Project",
-                    title: "Ratio Analysis – India Motor Parts & Accessories Ltd. (IMPAL)",
-                    company: "Amrita School of Business",
-                    period: "2025",
-                    icon: "file-bar-chart",
-                    description: [
-                        "Evaluated the company’s financial performance over a five-year period using ratio analysis.",
-                        "Analysed liquidity, profitability, solvency and efficiency ratios (2021–2025) using Excel-based financial analysis.",
-                        "Identified declining capital efficiency and cost-pressure trends, providing insights on cost optimisation and asset utilisation."
-                    ]
-                },
-                {
-                    type: "Academic Project",
-                    title: "ESG Performance Analysis of 50 Indian Companies",
-                    company: "Amrita School of Business",
-                    period: "2020 – 2024 (data period)",
-                    icon: "line-chart",
-                    description: [
-                        "Conducted data-driven ESG performance analysis of 50 Indian companies.",
-                        "Used multiple and simple regression models to understand how environmental and organisational factors affect ROA and ROE.",
-                        "Developed basic skills in interpreting regression output and linking it to managerial implications."
-                    ]
-                },
-                {
-                    type: "Academic Engagement",
-                    title: "Marketing Knowledge through Case Discussions & Presentations",
-                    company: "Amrita School of Business",
-                    period: "Ongoing",
-                    icon: "megaphone",
-                    description: [
-                        "Participated in marketing case discussions, presentations and activities.",
-                        "Strengthened understanding of market segmentation, branding and consumer behaviour.",
-                        "Built confidence in presenting ideas and working in teams."
-                    ]
-                }
-            ];
-
-            const achievementData = [
-                { title: "Cleared SSC (Staff Selection Commission) GD Exam", icon: "check-circle-2" },
-                { title: "Member – SSL (Social Service League)", icon: "heart-handshake" },
-                { title: "Scouts & Guides – Attended camps up to Dwitya Sopan", icon: "tent-tree" }
-            ];
-
-            const skillsList = [
-                "Creativity and adaptability",
-                "Calm and active listening",
-                "Stress management"
-            ];
-
-            const hobbiesList = [
-                "Playing chess",
-                "Travelling to forests",
-                "Meditation and mindfulness",
-                "Collecting numismatic treasures",
-                "Knowing the practices of people"
-            ];
-        </script>
-
-        <section id="home" class="py-16 sm:py-24 bg-white rounded-3xl shadow-2xl mb-16 overflow-hidden">
-            <div class="lg:grid lg:grid-cols-12 lg:gap-12 p-6 sm:p-12 items-center">
-                <div class="lg:col-span-7 space-y-6">
-                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-[var(--secondary-black)] opacity-0 hero-title">
-                        Sadhasivam
-                    </h1>
-                    <h2 class="text-xl sm:text-2xl font-semibold text-[var(--primary-orange)] opacity-0 hero-subtitle">
-                        Aspiring Marketing Intern | MBA (Marketing)
-                    </h2>
-                    <p class="mt-4 text-lg text-gray-700 opacity-0 hero-text">
-                        Objective: OBJECTIVE:
-                        Seeking a Market Research Intern position at Zoho to apply analytical skills, conduct market/competitor studies, and contribute insights that support data-driven product and marketing decisions.
-                    </p> 
-                    <div class="flex flex-wrap gap-4 mt-8 opacity-0 hero-buttons">
-                        <a id="linkedin-link-home" href="https://www.linkedin.com/in/sadha-sivam-79833736a" target="_blank"
-                           class="flex items-center px-8 py-3 border border-transparent text-base font-medium rounded-full shadow-lg text-white bg-[var(--primary-orange)] hover:bg-orange-700 transition duration-300 transform hover:scale-105">
-                            Connect on LinkedIn <i data-lucide="linkedin" class="w-5 h-5 ml-2"></i>
-                        </a>
-                        <a href="mailto:sadhasivamesh8@gmail.com"
-                           class="flex items-center px-6 py-3 rounded-full border border-gray-300 text-sm font-medium text-gray-700 hover:bg-gray-100 transition">
-                            <i data-lucide="mail" class="w-4 h-4 mr-2 text-[var(--primary-orange)]"></i> sadhasivamesh8@gmail.com
-                        </a>
-                    </div>
-                </div>
-
-                <div class="mt-10 lg:mt-0 lg:col-span-5 flex justify-center items-center hero-image">
-                    <div class="w-64 h-64 sm:w-80 sm:h-80 bg-[var(--light-bg)] rounded-3xl shadow-xl flex items-center justify-center border-4 border-[var(--primary-orange)] transform rotate-2 overflow-hidden">
-                        <img src="https://github.com/sadhasivanesh/Sadhasivam/blob/b37c16535acc939e544a288e57a4906409bcb6a6/WhatsApp%20Image%202025-11-24%20at%2022.01.07_202c21c4.jpg?raw=true" alt="Sadhasivam" class="w-full h-full object-cover rounded-3xl -rotate-2">
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="projects" class="py-16">
-            <h3 class="text-4xl font-extrabold text-[var(--secondary-black)] text-center mb-4 reveal">
-                Projects & Applied Learning
-            </h3>
-            <p class="text-xl text-gray-700 text-center max-w-4xl mx-auto mb-16 reveal" style="transition-delay: 0.1s;">
-                Key projects where I practised financial analysis, ESG evaluation and marketing thinking.
-            </p>
-
-            <div id="project-timeline" class="space-y-10 max-w-5xl mx-auto">
-                </div>
-        </section>
-
-        <section id="contribute" class="py-16 textured-bg rounded-3xl mt-16 p-6 sm:p-12">
-            <h3 class="text-4xl font-extrabold text-[var(--secondary-black)] text-center mb-4 reveal">
-                What I Can Contribute
-            </h3>
-            <p class="text-xl text-gray-700 text-center max-w-4xl mx-auto mb-16 reveal" style="transition-delay: 0.1s;">
-                Based on my academic projects and experience, I can support your marketing and analysis initiatives from day one.
-            </p>
-            <div id="contribute-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                </div>
-        </section>
-
-        <section id="education" class="py-16 bg-white rounded-3xl shadow-xl mt-16 p-6 sm:p-12">
-            <h3 class="text-4xl font-extrabold text-[var(--secondary-black)] text-center mb-4 reveal">
-                Education
-            </h3>
-            <p class="text-xl text-gray-700 text-center max-w-4xl mx-auto mb-16 reveal" style="transition-delay: 0.1s;">
-                A strong academic foundation in business, commerce and marketing.
-            </p>
-
-            <div id="education-timeline" class="space-y-8 max-w-4xl mx-auto">
-                </div>
-
-            <h4 class="text-2xl font-bold text-[var(--secondary-black)] mt-16 mb-8 reveal">
-                Achievements & Extra-Curricular Activities
-            </h4>
-            <div id="achievements-grid" class="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-4xl mx-auto">
-                </div>
-        </section>
-
-        <section id="skills-section" class="py-16 textured-bg rounded-3xl shadow-xl mt-16 p-6 sm:p-12">
-            <h3 class="text-4xl font-extrabold text-[var(--secondary-black)] text-center mb-4 reveal">
-                Skills & Personal Interests
-            </h3>
-            <p class="text-xl text-gray-700 text-center max-w-4xl mx-auto mb-16 reveal" style="transition-delay: 0.1s;">
-                Personal strengths and interests that support my performance as a marketing intern.
-            </p>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-4xl mx-auto">
-                <div class="reveal">
-                    <h4 class="text-xl font-semibold mb-4 flex items-center">
-                        <i data-lucide="sparkles" class="w-5 h-5 mr-2 text-[var(--primary-orange)]"></i> Skills
-                    </h4>
-                    <ul id="skills-list" class="list-disc list-inside space-y-2 text-gray-700">
-                        </ul>
-                </div>
-                <div class="reveal" style="transition-delay: 0.1s;">
-                    <h4 class="text-xl font-semibold mb-4 flex items-center">
-                        <i data-lucide="smile" class="w-5 h-5 mr-2 text-[var(--accent-light-orange)]"></i> Hobbies
-                    </h4>
-                    <ul id="hobbies-list" class="list-disc list-inside space-y-2 text-gray-700">
-                        </ul>
-                </div>
-            </div>
-        </section>
-
-        <section id="values" class="py-16 bg-white rounded-3xl shadow-xl mt-16 p-6 sm:p-12">
-            <h3 class="text-4xl font-extrabold text-[var(--secondary-black)] text-center mb-4 reveal">
-                My Core Values
-            </h3>
-            <p class="text-xl text-gray-700 text-center max-w-4xl mx-auto mb-16 reveal" style="transition-delay: 0.1s;">
-                These values guide how I work, learn and collaborate with others.
-            </p>
-            <div id="values-grid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6">
-                </div>
-        </section>
-
-    </main>
-
-    <footer id="contact" class="bg-[var(--secondary-black)] mt-16 py-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 reveal">
-            <div class="text-center space-y-4">
-                <h4 class="text-3xl font-bold text-white">Let’s Connect</h4>
-                <p class="text-gray-400 max-w-2xl mx-auto">
-                    I am actively seeking a Marketing internship opportunity at Ryewalk where I can apply my academic learning,
-                    analytical approach and curiosity about consumer behaviour.
-                </p>
-                <div class="flex justify-center flex-wrap gap-6 pt-6 text-sm">
-                    <a href="mailto:sadhasivamesh8@gmail.com" class="footer-link">
-                        <i data-lucide="mail" class="w-5 h-5 mr-2"></i> sadhasivamesh8@gmail.com
-                    </a>
-                    <a href="tel:+919894229560" class="footer-link">
-                        <i data-lucide="phone" class="w-5 h-5 mr-2"></i> +91 98942 29560
-                    </a>
-                    <a id="linkedin-link-footer" href="https://www.linkedin.com/in/sadha-sivam-79833736a" target="_blank" class="footer-link">
-                        <i data-lucide="linkedin" class="w-5 h-5 mr-2"></i> LinkedIn Profile
-                    </a>
-                </div>
-            </div>
-            <div class="mt-10 pt-8 border-t border-gray-700 text-center">
-                <p class="text-sm text-gray-500">
-                    &copy; 2025 Sadhasivam. All rights reserved.
-                </p>
-            </div>
+        <div class="objective-box">
+            [cite_start]<p><strong>PROFESSIONAL OBJECTIVE:</strong> Seeking a Market Research Intern position at Zoho to apply analytical skills, conduct market/competitor studies, and contribute insights that support data-driven product and marketing decisions[cite: 5].</p>
         </div>
-    </footer>
 
-    <script>
-        const refreshIcons = () => {
-            if (typeof lucide !== "undefined") {
-                lucide.createIcons();
-            }
-        };
+        <div class="resume-main-content">
+            <section class="left-column">
+                [cite_start]<h2>📊 PROJECTS & DATA ANALYSIS EXPERIENCE [cite: 11]</h2>
 
-        const renderContributionGrid = () => {
-            const el = document.getElementById("contribute-grid");
-            el.innerHTML = contributionData.map((item, index) => `
-                <div class="p-6 bg-white rounded-xl animated-card reveal fade-in-up" data-delay="${index * 100}">
-                    <div class="flex items-start space-x-4 mb-3">
-                        <i data-lucide="${item.icon}" class="w-8 h-8 ${item.color} flex-shrink-0"></i>
-                        <h4 class="text-xl font-bold text-[var(--secondary-black)]">${item.title}</h4>
-                    </div>
-                    <p class="text-gray-700 text-sm">${item.description}</p>
-                </div>
-            `).join("");
-        };
-
-        const renderValuesGrid = () => {
-            const el = document.getElementById("values-grid");
-            el.innerHTML = coreValuesData.map((item, index) => `
-                <div class="flex flex-col items-center justify-center p-4 bg-[var(--light-bg)] rounded-lg text-center animated-card reveal fade-in-up" data-delay="${index * 50}">
-                    <i data-lucide="${item.icon}" class="w-8 h-8 text-[var(--primary-orange)] mb-2"></i>
-                    <span class="text-sm font-medium text-[var(--secondary-black)]">${item.title}</span>
-                </div>
-            `).join("");
-        };
-
-        const renderEducation = () => {
-            const el = document.getElementById("education-timeline");
-            el.innerHTML = educationData.map((item, index) => `
-                <div class="flex items-start reveal slide-in-right" data-delay="${index * 150}">
-                    <div class="flex-shrink-0 w-28 text-sm font-medium text-[var(--primary-orange)] mr-6 mt-1">
-                        ${item.period}
-                    </div>
-                    <div class="flex-1 border-l-4 border-[var(--primary-orange)] pl-6 pb-6">
-                        <h4 class="text-lg font-bold text-[var(--secondary-black)]">${item.degree}</h4>
-                        <p class="text-base text-gray-700">${item.institution}</p>
-                        ${item.specialization ? `<p class="text-sm text-[var(--accent-light-orange)] font-semibold mt-1">${item.specialization}</p>` : ""}
-                        ${item.details ? `<p class="text-sm text-gray-600 mt-1">${item.details}</p>` : ""}
-                    </div>
-                </div>
-            `).join("");
-        };
-
-        const renderAchievements = () => {
-            const el = document.getElementById("achievements-grid");
-            el.innerHTML = achievementData.map((item, index) => `
-                <div class="p-4 bg-[var(--light-bg)] rounded-xl animated-card flex items-start space-x-3 reveal fade-in-up" data-delay="${index * 120}">
-                    <i data-lucide="${item.icon}" class="w-6 h-6 text-[var(--primary-orange)] mt-1"></i>
-                    <p class="text-sm text-gray-700">${item.title}</p>
-                </div>
-            `).join("");
-        };
-
-        const renderProjects = () => {
-            const el = document.getElementById("project-timeline");
-            el.innerHTML = projectData.map((item, index) => `
-                <div class="bg-white rounded-2xl shadow-md p-6 animated-card reveal fade-in-up" data-delay="${index * 150}">
-                    <div class="flex items-start justify-between">
-                        <div>
-                            <p class="text-xs uppercase tracking-wide text-[var(--primary-orange)] font-semibold">${item.type}</p>
-                            <h4 class="text-xl font-bold text-[var(--secondary-black)] mt-1">${item.title}</h4>
-                            <p class="text-sm text-gray-700">${item.company} &middot; ${item.period}</p>
-                        </div>
-                        <i data-lucide="${item.icon}" class="w-8 h-8 text-[var(--primary-orange)] ml-4 flex-shrink-0"></i>
-                    </div>
-                    <ul class="mt-4 list-disc list-inside space-y-1 text-sm text-gray-700">
-                        ${item.description.map(d => `<li>${d}</li>`).join("")}
+                <div class="project-item">
+                    [cite_start]<h3>ESG Performance Analysis (2020-2024 Data) [cite: 16]</h3>
+                    <ul>
+                        [cite_start]<li>Conducted a data-driven ESG performance analysis of **50 Indian companies**[cite: 16].</li>
+                        [cite_start]<li>Utilized **multiple and simple regression models** to identify how environmental and organizational factors influence financial performance (ROA & ROE)[cite: 16].</li>
                     </ul>
                 </div>
-            `).join("");
-        };
 
-        const renderSkillsAndHobbies = () => {
-            document.getElementById("skills-list").innerHTML =
-                skillsList.map(s => `<li>${s}</li>`).join("");
-            document.getElementById("hobbies-list").innerHTML =
-                hobbiesList.map(h => `<li>${h}</li>`).join("");
-        };
+                <div class="project-item">
+                    [cite_start]<h3>Ratio Analysis: India Motor Parts & Accessories Ltd. (IMPAL) [cite: 12]</h3>
+                    <ul>
+                        [cite_start]<li>**Objective:** Evaluated the company's financial performance over a **five-year period (2021-2025)** using detailed ratio analysis[cite: 13, 14].</li>
+                        [cite_start]<li>**Analysis:** Performed detailed analysis of **liquidity, profitability, solvency, and efficiency ratios**[cite: 14].</li>
+                        [cite_start]<li>**Outcome:** Identified declining capital efficiency and cost pressure trends, leading to strategic insights on improving cost optimization and asset utilization[cite: 15].</li>
+                    </ul>
+                </div>
 
-        const setupRevealOnScroll = () => {
-            const revealEls = document.querySelectorAll(".reveal");
-            const observer = new IntersectionObserver(entries => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const delay = entry.target.dataset.delay || 0;
-                        setTimeout(() => {
-                            entry.target.classList.add("visible");
-                        }, delay);
-                        // Optional: Unobserve after first visibility
-                        // observer.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.15 });
+                <div class="project-item">
+                    [cite_start]<h3>Brand Positioning and Marketing Case Studies [cite: 17, 18]</h3>
+                    <ul>
+                        [cite_start]<li>Completed intensive case studies on **Gillette and Barbie**, focusing on **brand positioning and gender-based marketing**[cite: 18].</li>
+                        [cite_start]<li>Gained marketing knowledge through case discussions, presentations, and activities[cite: 17].</li>
+                    </ul>
+                </div>
 
-            revealEls.forEach(el => observer.observe(el));
-        };
+                [cite_start]<h2>⭐ ACHIEVEMENTS & ENGAGEMENT [cite: 19, 20]</h2>
+                <ul class="skill-list">
+                    [cite_start]<li>Cleared **SSC (Staff Selection Commission) GD exam**[cite: 19].</li>
+                    [cite_start]<li>Attended camps up to **dwitya sopan in Scouts and Guides**[cite: 20].</li>
+                    [cite_start]<li>Part of **SSL (Social Service League)**[cite: 19].</li>
+                </ul>
+            </section>
 
-        document.addEventListener("DOMContentLoaded", () => {
-            renderContributionGrid();
-            renderValuesGrid();
-            renderEducation();
-            renderAchievements();
-            renderProjects();
-            renderSkillsAndHobbies();
-            refreshIcons(); // Ensure icons are created after dynamic content is added
-            setupRevealOnScroll(); // Setup scroll observer after all content is rendered
-        });
-    </script>
+            <section class="right-column">
+                [cite_start]<h2>📚 EDUCATION [cite: 6]</h2>
+                <div style="margin-bottom: 1em;">
+                    [cite_start]<h3>Master of Business Administration (MBA) [cite: 7]</h3>
+                    [cite_start]<p style="margin: 0;">Amrita Vishwa Vidyapeetham, Coimbatore [cite: 7]</p>
+                    [cite_start]<p style="margin: 0; font-size: 10pt;">Year 2025-2027 [cite: 7]</p>
+                </div>
+                <div style="margin-bottom: 1em;">
+                    [cite_start]<h3>Bachelor of Commerce (B.Com) [cite: 8]</h3>
+                    [cite_start]<p style="margin: 0;">Gobi Arts & Science College, Gobichettipalayam [cite: 8]</p>
+                    [cite_start]<p style="margin: 0; font-size: 10pt;">Year 2021-2024, **CGPA: 7.3** [cite: 8]</p>
+                </div>
+                <div style="font-size: 10pt;">
+                    <p style="margin: 0.5em 0 0.2em;">**Additional Academic Qualifications:**</p>
+                    <ul style="margin: 0; padding-left: 20px;">
+                        [cite_start]<li>HSC (State board) Commerce with business statistics, 92.5% (2021) [cite: 9]</li>
+                        [cite_start]<li>SSC (State board), 89% (2019) [cite: 10]</li>
+                    </ul>
+                </div>
+
+                [cite_start]<h2>🧠 SKILLS & COMPETENCIES [cite: 21]</h2>
+                <ul class="skill-list">
+                    [cite_start]<li>**Core Competencies:** Creativity and adaptability [cite: 22][cite_start], Calm and active listening [cite: 23][cite_start], Stress management[cite: 24].</li>
+                    [cite_start]<li>**Analytical:** Financial Ratio Analysis (Inferred from project [cite: 14][cite_start]), Regression Modeling (Simple & Multiple) (Inferred from project [cite: 16][cite_start]), Marketing Analysis (Brand Positioning) (Inferred from project [cite: 18]).</li>
+                </ul>
+
+                [cite_start]<h2>🗣️ LANGUAGES [cite: 33]</h2>
+                <ul class="skill-list">
+                    [cite_start]<li>English [cite: 34]</li>
+                    [cite_start]<li>Tamil (Native) [cite: 34]</li>
+                </ul>
+
+                [cite_start]<h2>🧘 INTERESTS (For cultural fit) [cite: 25]</h2>
+                <ul class="skill-list" style="font-size: 10pt;">
+                    [cite_start]<li>Playing chess [cite: 26]</li>
+                    [cite_start]<li>Travelling to forests [cite: 27]</li>
+                    [cite_start]<li>Meditation and mindfulness [cite: 28]</li>
+                    [cite_start]<li>Collecting numismatic treasures [cite: 29]</li>
+                    [cite_start]<li>Knowing the practices of people [cite: 30]</li>
+                </ul>
+            </section>
+        </div>
+    </div>
+
+    <div class="page" id="portfolio-1">
+        <header class="portfolio-header">
+            <h1>SADHASIVAM: MARKET RESEARCH & ANALYTICAL PORTFOLIO</h1>
+        </header>
+
+        <h2>INTRODUCTION & CORE CAPABILITIES</h2>
+        <div class="portfolio-grid">
+            <div class="portfolio-section">
+                <h3>Objective & Profile</h3>
+                [cite_start]<p>Seeking a Market Research Intern position at Zoho to apply analytical skills, conduct market/competitor studies, and contribute insights that support data-driven product and marketing decisions[cite: 5].</p>
+                [cite_start]<p><strong>Education:</strong> MBA (2025-2027) Amrita Vishwa Vidyapeetham [cite: 7][cite_start], B.Com (2021-2024) CGPA 7.3[cite: 8].</p>
+            </div>
+            <div class="portfolio-section">
+                <h3>Analytical & Soft Competencies</h3>
+                <ul style="padding-left: 15px;">
+                    [cite_start]<li>**Analytical Tools:** Financial Ratio Analysis, Regression Modeling (Inferred from projects [cite: 14, 16]).</li>
+                    [cite_start]<li>**Core Skills:** Creativity and adaptability [cite: 22][cite_start], Calm and active listening [cite: 23][cite_start], Stress management[cite: 24].</li>
+                    [cite_start]<li>**Engagement:** Cleared SSC GD exam [cite: 19][cite_start], Part of SSL[cite: 19].</li>
+                </ul>
+            </div>
+        </div>
+
+        [cite_start]<h2>📈 PROJECT DEEP DIVE I: ESG PERFORMANCE ANALYSIS (2020-2024 Data) [cite: 16]</h2>
+        <div class="portfolio-grid">
+            <div class="portfolio-section" style="grid-column: span 2;">
+                <p><strong>Focus:</strong> Identifying the influence of environmental and organizational factors on corporate financial performance.</p>
+            </div>
+            <div class="portfolio-section">
+                <h3>Methodology & Scope</h3>
+                <ul style="padding-left: 15px;">
+                    [cite_start]<li>**Sample Size:** Analysis covered **50 Indian companies**[cite: 16].</li>
+                    [cite_start]<li>**Data Period:** Used data spanning **2020-2024**[cite: 16].</li>
+                    [cite_start]<li>**Model Used:** Utilized **multiple and simple regression models** to quantify the influence of factors[cite: 16].</li>
+                </ul>
+            </div>
+            <div class="portfolio-section">
+                <h3>Outcome Variables & Findings</h3>
+                <ul style="padding-left: 15px;">
+                    [cite_start]<li>**Financial Metrics:** Focused on analyzing **Return on Assets (ROA)** and **Return on Equity (ROE)**[cite: 16].</li>
+                    <li>**Inferred Analytical Output:** Insights were drawn on how specific environmental and organizational variables impact the analyzed financial metrics (ROA & ROE).</li>
+                    <li>*(**Suggested Visual:** Placeholder for a simple data graphic illustrating regression results)*</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="page" id="portfolio-2">
+        <header class="portfolio-header">
+            <h1>STRATEGIC & MARKETING INSIGHTS</h1>
+        </header>
+
+        [cite_start]<h2>💰 PROJECT DEEP DIVE II: STRATEGIC RATIO ANALYSIS (IMPAL) [cite: 12]</h2>
+        <div class="portfolio-grid">
+            <div class="portfolio-section">
+                <h3>Analysis Scope & Tools</h3>
+                <ul style="padding-left: 15px;">
+                    [cite_start]<li>**Objective:** Evaluate company's financial performance over a **five-year period (2021-2025)**[cite: 13, 14].</li>
+                    [cite_start]<li>**Ratios Covered:** Detailed analysis of **liquidity, profitability, solvency, and efficiency ratios**[cite: 14].</li>
+                    [cite_start]<li>**Tool:** Employed **Excel-based financial analysis** to interpret key business metrics[cite: 14].</li>
+                </ul>
+            </div>
+            <div class="portfolio-section">
+                <h3>Key Findings & Strategic Insights</h3>
+                <ul style="padding-left: 15px;">
+                    [cite_start]<li>Identified a **declining capital efficiency trend**[cite: 15].</li>
+                    [cite_start]<li>Pinpointed areas of **cost pressure** within the company's operations[cite: 15].</li>
+                    [cite_start]<li>**Strategic Insight:** The outcome led to recommendations for improving **cost optimization and asset utilization**[cite: 15].</li>
+                    <li>*(**Suggested Visual:** Placeholder for a line chart template showing the trend of key ratios over the 5-year period)*</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2>💡 PROJECT DEEP DIVE III: BRAND POSITIONING CASE STUDIES</h2>
+        <div class="portfolio-grid">
+            <div class="portfolio-section" style="grid-column: span 2;">
+                <p><strong>Focus:</strong> Gaining essential knowledge in market positioning and segmentation for product analysis—critical for Market Research.</p>
+                <ul style="padding-left: 15px;">
+                    [cite_start]<li>**Marketing Foundation:** Gained comprehensive marketing knowledge through case discussions, presentations, and activities in Amrita School of Business[cite: 17].</li>
+                    [cite_start]<li>**Case Studies Completed:** Detailed analysis conducted on **Gillette and Barbie**[cite: 18].</li>
+                    [cite_start]<li>**Research Focus:** Analysis centered specifically on strategic **brand positioning** and methods of **gender-based marketing**[cite: 18].</li>
+                </ul>
+            </div>
+        </div>
+
+        <footer style="text-align: center; margin-top: 50px; font-size: 9pt; color: #999;">
+            End of Portfolio Document
+        </footer>
+    </div>
 
 </body>
-
 </html>

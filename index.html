@@ -3,396 +3,888 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sadhasivam - Resume</title>
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <title>Sadhasivam - Market Research Intern Candidate</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     
     <style>
-        /* --- CSS VARIABLES & RESET --- */
+        /* ======================================================================
+        CSS Variables & Global Reset
+        ======================================================================
+        */
         :root {
-            /* Palette: Professional, Data-Driven, Zoho-esque */
-            --primary: #0f3d56;       /* Deep Teal */
-            --secondary: #1e6091;     /* Lighter Blue */
-            --accent: #f59e0b;        /* Insight Gold */
-            --bg-body: #f3f4f6;       /* Light Gray */
-            --bg-card: #ffffff;       /* Pure White */
-            --text-main: #111827;     /* Almost Black */
-            --text-muted: #6b7280;    /* Muted Gray */
-            --border: #e5e7eb;
-            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            --radius: 8px;
+            --primary-navy: #0A2540;
+            --secondary-teal: #2A9D8F;
+            --background-light: #FCFCFC;
+            --text-charcoal: #1A1A1A;
+            --highlight-yellow: #F4D35E; /* Sparingly used for emphasis */
+            --header-font: 'Poppins', sans-serif;
+            --body-font: 'Inter', sans-serif;
+            --card-bg: #FFFFFF;
+            --transition-speed: 0.3s;
         }
 
-        * {
+        *, *::before, *::after {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
         }
 
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg-body);
-            color: var(--text-main);
+            font-family: var(--body-font);
+            color: var(--text-charcoal);
+            background-color: var(--background-light);
             line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
+            scroll-behavior: smooth;
+        }
+
+        /* ======================================================================
+        Typography & Utility
+        ======================================================================
+        */
+        h1, h2, h3, h4 {
+            font-family: var(--header-font);
+            font-weight: 700;
+            color: var(--primary-navy);
+        }
+
+        h2 {
+            font-size: 2.2rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 4px;
+            background-color: var(--secondary-teal);
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        p {
+            margin-bottom: 1rem;
         }
 
         a {
             text-decoration: none;
-            color: var(--secondary);
-            transition: color 0.2s;
+            color: var(--secondary-teal);
+            transition: color var(--transition-speed);
         }
 
         a:hover {
-            color: var(--primary);
-            text-decoration: underline;
+            color: var(--primary-navy);
         }
 
-        /* --- LAYOUT UTILITIES --- */
         .container {
-            max-width: 900px;
-            margin: 40px auto;
-            padding: 0 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
         }
 
-        .section {
-            background: var(--bg-card);
-            padding: 40px;
-            margin-bottom: 24px;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            opacity: 0; /* For animation */
-            transform: translateY(20px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        section {
+            padding: 80px 0;
+            opacity: 0; /* Initial state for fade-in */
+            transform: translateY(20px); /* Initial state for gentle upward motion */
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
         }
-
-        .section.visible {
+        
+        section.loaded {
             opacity: 1;
             transform: translateY(0);
         }
 
-        /* --- HEADER / HERO --- */
-        header {
+        .cta-button {
+            display: inline-block;
+            padding: 12px 25px;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: all var(--transition-speed);
             text-align: center;
-            margin-bottom: 40px;
         }
 
-        h1 {
-            font-size: 2.5rem;
-            color: var(--primary);
+        .cta-primary {
+            background-color: var(--secondary-teal);
+            color: var(--card-bg);
+            border: 2px solid var(--secondary-teal);
+        }
+
+        .cta-primary:hover {
+            background-color: var(--primary-navy);
+            border-color: var(--primary-navy);
+            color: var(--card-bg);
+        }
+
+        .icon-chip {
+            display: flex;
+            align-items: center;
+            padding: 8px 15px;
+            background-color: rgba(42, 157, 143, 0.1); /* Light Teal */
+            color: var(--primary-navy);
+            border-radius: 20px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin: 5px;
+            white-space: nowrap;
+        }
+
+        .icon-chip i {
+            margin-right: 8px;
+            color: var(--secondary-teal);
+        }
+
+        /* ======================================================================
+        Header & Navigation
+        ======================================================================
+        */
+        header {
+            background-color: var(--card-bg);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 15px 0;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--header-font);
+            font-size: 1.5rem;
             font-weight: 700;
-            letter-spacing: -0.02em;
-            margin-bottom: 8px;
-            text-transform: uppercase;
+            color: var(--primary-navy);
         }
 
-        .role-title {
-            font-size: 1.25rem;
-            color: var(--secondary);
-            font-weight: 500;
-            margin-bottom: 16px;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
+        .nav-links a {
+            margin-left: 25px;
+            color: var(--primary-navy);
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+        
+        .nav-links a:hover {
+            color: var(--secondary-teal);
+        }
+        
+        /* Mobile Nav Toggle (Hidden by default) */
+        .menu-toggle { display: none; }
+
+
+        /* ======================================================================
+        Hero Section
+        ======================================================================
+        */
+        #hero {
+            background-color: var(--background-light);
+            padding: 120px 0;
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
         }
 
-        .contact-info {
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+            line-height: 1.1;
+        }
+
+        .hero-content h1 span {
+            color: var(--secondary-teal);
+        }
+
+        .hero-content p {
+            font-size: 1.35rem;
+            font-weight: 400;
+            color: var(--primary-navy);
+            margin-bottom: 30px;
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+
+        .contact-cta-group {
             display: flex;
             justify-content: center;
-            flex-wrap: wrap;
             gap: 20px;
+        }
+
+        /* Subtle Animation for Tagline */
+        .tagline-anim {
+            display: inline-block;
+            animation: pulse-subtle 3s infinite ease-in-out;
+        }
+
+        @keyframes pulse-subtle {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.01); opacity: 0.95; }
+        }
+
+
+        /* ======================================================================
+        About Section
+        ======================================================================
+        */
+        #about {
+            background-color: #F7F7F7;
+        }
+
+        #about p {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+            font-size: 1.15rem;
+        }
+
+        /* ======================================================================
+        Skills Section
+        ======================================================================
+        */
+        #skills {
+            background-color: var(--background-light);
+        }
+        
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            padding: 0 10%;
+        }
+
+        .skill-card {
+            background-color: var(--card-bg);
+            padding: 25px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .skill-card i {
+            font-size: 2.5rem;
+            color: var(--secondary-teal);
+            margin-bottom: 15px;
+        }
+
+        .skill-card h4 {
+            font-size: 1.1rem;
+            color: var(--primary-navy);
+            font-weight: 600;
+        }
+
+        /* ======================================================================
+        Projects Section
+        ======================================================================
+        */
+        #projects {
+            background-color: #F7F7F7;
+        }
+        
+        .projects-grid {
+            /* Now handling 8 total projects, using 4 columns for large screens */
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .project-tile {
+            background-color: var(--card-bg);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+            border-left: 5px solid var(--secondary-teal);
+        }
+
+        .project-tile:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .project-tile h3 {
+            font-size: 1.4rem;
+            color: var(--primary-navy);
+            margin-bottom: 10px;
+        }
+
+        .project-tile p {
             font-size: 0.95rem;
-            color: var(--text-muted);
+            color: #444;
+            margin-bottom: 5px;
+        }
+        
+        .project-tile strong {
+            color: var(--primary-navy);
+            font-weight: 600;
+        }
+
+        .project-outcome {
+            margin-top: 15px;
+            padding: 10px;
+            background-color: rgba(244, 211, 94, 0.1); /* Light Warm Yellow */
+            border-radius: 5px;
+            font-style: italic;
+            font-size: 0.9rem;
+            border-left: 3px solid var(--highlight-yellow);
+        }
+
+        /* ======================================================================
+        Education Section (Timeline Style)
+        ======================================================================
+        */
+        #education {
+            background-color: var(--background-light);
+        }
+        
+        .timeline {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background-color: var(--secondary-teal);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -2px;
+        }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+            text-align: right;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            right: -10px;
+            background-color: var(--primary-navy);
+            border: 3px solid var(--secondary-teal);
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .timeline-item:nth-child(even)::after {
+            left: -8px;
+        }
+
+        .timeline-content {
+            padding: 20px;
+            background-color: var(--card-bg);
+            position: relative;
+            border-radius: 6px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            transition: box-shadow var(--transition-speed);
+        }
+        
+        .timeline-content:hover {
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .timeline-content h4 {
+            color: var(--secondary-teal);
+            margin-bottom: 5px;
+        }
+
+        .timeline-content p {
+            margin: 0;
+            font-size: 0.95rem;
+        }
+        
+        .cgpa {
+            font-weight: 700;
+            color: var(--highlight-yellow);
+            display: block;
+            margin-top: 5px;
+        }
+
+        /* ======================================================================
+        Achievements & Hobbies
+        ======================================================================
+        */
+        #achievements-hobbies {
+            background-color: #F7F7F7;
+        }
+
+        .flex-row {
+            display: flex;
+            justify-content: space-around;
+            gap: 40px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .col-half {
+            flex-basis: 50%;
+        }
+
+        /* Achievements Styling */
+        .achievement-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .achievement-list li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 15px;
+            font-size: 1.05rem;
+        }
+
+        .achievement-list li::before {
+            content: "\f00c"; /* Font Awesome Checkmark */
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            color: var(--secondary-teal);
+            font-size: 0.9rem;
+        }
+
+        /* Hobbies Styling (Horizontal Chips) */
+        .hobbies-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+        
+        .hobby-chip {
+            display: flex;
+            align-items: center;
+            background-color: var(--primary-navy);
+            color: var(--card-bg);
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: 400;
+            transition: background-color var(--transition-speed);
+        }
+        
+        .hobby-chip:hover {
+            background-color: var(--secondary-teal);
+        }
+        
+        .hobby-chip i {
+            margin-right: 8px;
+            color: var(--highlight-yellow);
+        }
+
+
+        /* ======================================================================
+        Contact Section
+        ======================================================================
+        */
+        #contact {
+            text-align: center;
+            background-color: var(--background-light);
+        }
+
+        .contact-info-grid {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
         }
 
         .contact-item {
+            font-size: 1.1rem;
+            font-weight: 400;
+            color: var(--primary-navy);
             display: flex;
             align-items: center;
-            gap: 6px;
         }
 
-        /* --- TYPOGRAPHY --- */
-        h2 {
-            font-size: 1.5rem;
-            color: var(--primary);
-            border-bottom: 2px solid var(--border);
-            padding-bottom: 10px;
-            margin-bottom: 24px;
+        .contact-item i {
+            color: var(--secondary-teal);
+            margin-right: 10px;
+            font-size: 1.4rem;
+        }
+
+        .contact-buttons {
             display: flex;
-            align-items: center;
-            gap: 10px;
+            justify-content: center;
+            gap: 25px;
         }
 
-        h3 {
-            font-size: 1.15rem;
-            font-weight: 700;
-            color: var(--text-main);
-        }
-
-        /* --- EXPERIENCE SECTION (TIMELINE) --- */
-        .timeline-item {
-            position: relative;
-            padding-left: 24px;
-            margin-bottom: 32px;
-            border-left: 2px solid var(--border);
-        }
-
-        .timeline-item:last-child {
-            margin-bottom: 0;
-        }
-
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -6px;
-            top: 6px;
-            width: 10px;
-            height: 10px;
-            background-color: var(--accent);
-            border-radius: 50%;
-        }
-
-        .job-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            flex-wrap: wrap;
-            margin-bottom: 8px;
-        }
-
-        .company {
-            font-weight: 600;
-            color: var(--secondary);
-        }
-
-        .date {
+        /* ======================================================================
+        Footer
+        ======================================================================
+        */
+        footer {
+            background-color: var(--primary-navy);
+            color: rgba(255, 255, 255, 0.7);
+            padding: 20px 0;
+            text-align: center;
             font-size: 0.9rem;
-            color: var(--text-muted);
-            font-weight: 500;
         }
 
-        ul {
-            list-style-position: outside;
-            margin-left: 20px;
-            margin-top: 10px;
+        /* ======================================================================
+        Responsiveness (Mobile First)
+        ======================================================================
+        */
+        @media (max-width: 768px) {
+            /* Adjust General Typography */
+            h1 { font-size: 2.5rem !important; }
+            h2 { font-size: 1.8rem; margin-bottom: 2rem; }
+            #hero { padding: 80px 0; }
+            
+            /* Adjust Navigation */
+            .nav-links { display: none; }
+            .logo { font-size: 1.3rem; }
+            
+            /* Adjust Hero Section */
+            .hero-content p { font-size: 1.15rem; }
+            .contact-cta-group { flex-direction: column; gap: 15px; }
+            /* Adjust Project Grid to 1 column on mobile for optimal readability */
+            .projects-grid { 
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            /* Adjust Skills Section */
+            .skills-grid { padding: 0; }
+
+            /* Adjust Education Timeline */
+            .timeline::after { left: 18px; } /* Move timeline line to the left */
+            .timeline-item { width: 100%; padding-left: 50px; padding-right: 5px; }
+            .timeline-item:nth-child(odd), 
+            .timeline-item:nth-child(even) { 
+                left: 0; 
+                text-align: left;
+            }
+            .timeline-item:nth-child(odd)::after,
+            .timeline-item:nth-child(even)::after {
+                left: 10px;
+                right: auto;
+            }
+            
+            /* Adjust Achievements & Hobbies */
+            .flex-row { flex-direction: column; gap: 50px; }
+            .col-half { flex-basis: 100%; }
+            .achievement-list { text-align: left; }
+            .hobbies-grid { justify-content: flex-start; }
         }
 
-        li {
-            margin-bottom: 8px;
-            color: #374151;
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .skills-grid { padding: 0 5%; }
+            /* Adjust Project Grid to 2 columns on tablet for better density */
+            .projects-grid { 
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
-
-        /* --- SKILLS GRID --- */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 24px;
-        }
-
-        .skill-category h4 {
-            font-size: 1rem;
-            color: var(--primary);
-            margin-bottom: 12px;
-            font-weight: 600;
-        }
-
-        .skill-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-
-        .tag {
-            background-color: #e0f2fe; /* Light blue background */
-            color: var(--secondary);
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 500;
-        }
-
-        /* --- EDUCATION --- */
-        .edu-item {
-            margin-bottom: 20px;
-        }
-
-        /* --- PRINT STYLES --- */
-        @media print {
-            body { background-color: white; }
-            .container { max-width: 100%; margin: 0; padding: 0; }
-            .section { box-shadow: none; padding: 0; margin-bottom: 30px; border: none; }
-            h2 { border-bottom: 1px solid #000; }
-            a { text-decoration: none; color: black; }
-            .timeline-item { border-left: 1px solid #ccc; }
-        }
-
-        /* --- RESPONSIVE ADJUSTMENTS --- */
-        @media (max-width: 600px) {
-            h1 { font-size: 2rem; }
-            .section { padding: 24px; }
-            .job-header { flex-direction: column; }
-            .date { margin-top: 4px; margin-bottom: 4px; }
-        }
+        /* Desktop/Wide Screen (1025px+) defaults to 3 or 4 columns for projects as defined in .projects-grid minmax */
     </style>
 </head>
 <body>
 
-    <div class="container">
-        
-        <header class="section visible">
-            <h1 id="name">SADHASIVAM</h1>
-            <div class="role-title">MBA Candidate | Aspiring Market Research Analyst</div>
-            <div class="contact-info">
-                <span class="contact-item">📧 <a href="mailto:sadhasivanesh8@gmail.com">sadhasivanesh8@gmail.com</a></span>
-                <span class="contact-item">📱 +91 98942 29560</span>
-                <span class="contact-item">🔗 <a href="https://www.linkedin.com/in/sadha-sivam-79833736a">LinkedIn Profile</a></span>
-                <span class="contact-item">📍 Coimbatore, India</span>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Sadhasivam.</div>
+                <div class="nav-links">
+                    <a href="#about">About</a>
+                    <a href="#skills">Skills</a>
+                    <a href="#projects">Projects</a>
+                    <a href="#education">Education</a>
+                    <a href="#contact">Contact</a>
                 </div>
-        </header>
+                <button class="menu-toggle" aria-label="Toggle navigation">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
 
-        <section class="section">
-            <h2>Objective</h2>
-            <p>
-                Seeking a Market Research Intern position at Zoho to apply analytical skills, conduct market/competitor studies, and contribute insights that support data-driven product and marketing decisions. Committed to leveraging a background in commerce and business statistics to drive strategic value. 
+    <section id="hero" class="loaded">
+        <div class="container hero-content">
+            <p style="color: var(--secondary-teal); font-size: 1.2rem; margin-bottom: 5px; font-weight: 600;">Aspiring Market Research Intern at Zoho</p>
+            <h1>Hello, I'm <span>Sadhasivam</span></h1>
+            <p class="tagline-anim">
+                Seeking a Market Research Intern position at Zoho to apply analytical skills, conduct market/competitor studies, and contribute insights that support data-driven product and marketing decisions.
             </p>
-        </section>
-
-        <section class="section">
-            <h2>Academic Projects</h2>
-            <div class="timeline-item">
-                <div class="job-header">
-                    <h3>Ratio Analysis - India Motor Parts & Accessories Ltd. (IMPAL)</h3>
-                    <span class="date">2025</span>
-                </div>
-                <div class="company">Amrita School of Business</div>
-                <ul>
-                    <li><strong>Objective:</strong> Evaluated the company's financial performance over a five-year period using ratio analysis. [cite: 13]</li>
-                    <li>Performed detailed analysis of liquidity, profitability, solvency, and efficiency ratios (2021-2025) using Excel-based financial analysis. [cite: 14]</li>
-                    <li>Identified declining capital efficiency and cost pressure trends, leading to strategic insights on improving cost optimization and asset utilization. [cite: 15]</li>
-                </ul>
+            <div class="contact-cta-group">
+                <a href="#contact" class="cta-button cta-primary">Get In Touch</a>
+                <a href="https://www.linkedin.com/in/sadha-sivam-79833736a" target="_blank" class="cta-button cta-primary" style="background-color: transparent; color: var(--secondary-teal); border-color: var(--secondary-teal);">
+                    <i class="fab fa-linkedin"></i> View LinkedIn
+                </a>
             </div>
+        </div>
+    </section>
 
-            <div class="timeline-item">
-                <div class="job-header">
-                    <h3>ESG Performance Analysis of 50 Indian Companies</h3>
-                    <span class="date">2020 - 2024</span>
-                </div>
-                <div class="company">Amrita School of Business</div>
-                <ul>
-                    <li>Conducted a data-driven ESG performance analysis of 50 Indian companies. [cite: 16]</li>
-                    <li>Utilized multiple and simple regression models to identify how environmental and organizational factors influence financial performance (ROA & ROE). [cite: 16]</li>
-                </ul>
-            </div>
+    <section id="about">
+        <div class="container">
+            <h2>About My Background</h2>
+            <p>
+                As an MBA candidate with a strong foundation in Commerce, I bring a keen analytical mindset and a dedication to **data-driven decision-making**. My academic work includes rigorous **Ratio Analysis** for financial evaluation and an **ESG Performance Analysis** involving simple and multiple regression models to quantify market impacts. I have actively gained **marketing knowledge** through case discussions, presentations, and activities at Amrita School of Business, including detailed case studies on **Gillette and Barbie**, focusing on crucial areas like brand positioning and gender-based marketing strategies. I am committed to continuous learning, stress management, and active listening—all crucial for translating market data into actionable business intelligence.
+            </p>
+        </div>
+    </section>
 
-            <div class="timeline-item">
-                <div class="job-header">
-                    <h3>Brand Positioning Case Studies</h3>
-                    <span class="date">Coursework</span>
-                </div>
-                <div class="company">Amrita School of Business</div>
-                <ul>
-                    <li>Completed case studies on Gillette and Barbie focusing on brand positioning and gender-based marketing. [cite: 18]</li>
-                    <li>Gained marketing knowledge through case discussions, presentations, and interactive activities. [cite: 17]</li>
-                </ul>
-            </div>
-        </section>
-
-        <section class="section">
-            <h2>Skills & Interests</h2>
+    <section id="skills">
+        <div class="container">
+            <h2>Core Skills</h2>
             <div class="skills-grid">
+                <div class="skill-card">
+                    <i class="fas fa-chart-line"></i>
+                    <h4>Quantitative Analysis</h4>
+                    <p style="font-size: 0.9rem;">(Ratio Analysis, Regression Models)</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-search"></i>
+                    <h4>Market Study Insight</h4>
+                    <p style="font-size: 0.9rem;">(Product & Marketing Decisions)</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-lightbulb"></i>
+                    <h4>Creative Adaptability</h4>
+                    <p style="font-size: 0.9rem;">(Problem Solving & Strategy)</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-headphones-alt"></i>
+                    <h4>Active Listening</h4>
+                    <p style="font-size: 0.9rem;">(Calm & Effective Communication)</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <div class="container">
+            <h2>Market Research & Analytical Projects</h2>
+            <div class="projects-grid">
                 
-                <div class="skill-category">
-                    <h4>Technical & Analytical</h4>
-                    <div class="skill-tags">
-                        <span class="tag">Excel Analysis</span>
-                        <span class="tag">Regression Models</span>
-                        <span class="tag">Ratio Analysis</span>
-                        <span class="tag">Business Statistics</span>
-                        <span class="tag">Market Research</span>
+                <div class="project-tile">
+                    <h3>GSK’s Boost Brand Market Research</h3>
+                    <p><strong>Scope:</strong> End-to-end market research project, interpreting 13+ data exhibits (consumer behavior, competitive mapping, SKU penetration, distribution, media SOV, and regional performance).</p>
+                    <div class="project-outcome">
+                        Outcome: Recommended positioning and geographic expansion strategies aligned with brand objectives, sharpening skills in data handling and actionable interpretation.
                     </div>
                 </div>
 
-                <div class="skill-category">
-                    <h4>Soft Skills</h4>
-                    <div class="skill-tags">
-                        <span class="tag">Creativity & Adaptability</span>
-                        <span class="tag">Active Listening</span>
-                        <span class="tag">Stress Management</span>
-                        <span class="tag">Team Collaboration</span>
+                <div class="project-tile">
+                    <h3>HCL Case Study & Business Metrics</h3>
+                    <p><strong>Focus:</strong> Collaborated on the HCL case study, preparing an **Excel-based evaluation** of key business metrics and strategic decisions.</p>
+                    <div class="project-outcome">
+                        Outcome: Sharpened skills in quantitative data handling, detailed comparison, and deriving actionable business interpretations under a strategic context.
+                    </div>
+                </div>
+                
+                <div class="project-tile">
+                    <h3>Two-Phase Market Analysis (MR, PESTEL, STP)</h3>
+                    <p><strong>Phases:</strong> Completed a team project involving Market Research (MR), PESTEL, and STP (Segmentation-Targeting-Positioning) analyses.</p>
+                    <p><strong>Output:</strong> Created individual analytical charts for each model.</p>
+                    <div class="project-outcome">
+                        Outcome: Strengthened ability to break down complex market environments and effectively segment, target, and position products/brands.
+                    </div>
+                </div>
+                
+                <div class="project-tile">
+                    <h3>Digital Packaging & Labelling Design</h3>
+                    <p><strong>Focus:</strong> Designed an individual digital packing & labelling poster.</p>
+                    <p><strong>Application:</strong> Applied product insights and consumer-focused communication principles to the design.</p>
+                    <div class="project-outcome">
+                        Outcome: Enhanced understanding of branding, packaging cues, and the vital role of visual appeal in consumer marketing.
+                    </div>
+                </div>
+                
+                <div class="project-tile">
+                    <h3>Spectacles Assignment & Structured Analysis</h3>
+                    <p><strong>Task:</strong> Submitted an individual assignment performing structured analysis and clear online documentation on the spectacles industry.</p>
+                    <div class="project-outcome">
+                        Outcome: Improved ability to translate observations and research findings into concise, insight-driven written output.
                     </div>
                 </div>
 
-                <div class="skill-category">
-                    <h4>Languages & Hobbies</h4>
-                    <div class="skill-tags">
-                        <span class="tag">English</span>
-                        <span class="tag">Tamil (Native)</span>
-                        <span class="tag">Chess</span>
-                        <span class="tag">Numismatics</span>
-                        <span class="tag">Forest Travel</span>
+                <div class="project-tile">
+                    <h3>Ratio Analysis – IMPAL (2025)</h3>
+                    <p><strong>Objective:</strong> Evaluate financial performance over 5 years.</p>
+                    <p><strong>Description:</strong> Analyzed liquidity, profitability, solvency, and efficiency ratios (2021–2025) using Excel.</p>
+                    <div class="project-outcome">
+                        Outcome: Identified declining capital efficiency and cost pressure trends and suggested cost-optimization insights.
+                    </div>
+                </div>
+
+                <div class="project-tile">
+                    <h3>ESG Performance Analysis (2020–2024)</h3>
+                    <p><strong>Description:</strong> Conducted ESG performance study on 50 Indian companies.</p>
+                    <p><strong>Methodology:</strong> Used simple & multiple regression models to assess impact on financial returns.</p>
+                    <div class="project-outcome">
+                        Outcome: Identified impact of environmental and organizational factors on ROA & ROE (Return on Assets & Equity).
+                    </div>
+                </div>
+
+                <div class="project-tile">
+                    <h3>Case Study: Gillette & Brand Strategy</h3>
+                    <p><strong>Focus:</strong> Completed a detailed case study on Gillette's business strategy.</p>
+                    <p><strong>Key Area:</strong> Brand positioning and marketing alignment.</p>
+                    <div class="project-outcome">
+                        Outcome: Gained practical knowledge in complex brand strategy and market segmentation principles.
                     </div>
                 </div>
 
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section class="section">
-            <h2>Education</h2>
+    <section id="education">
+        <div class="container">
+            <h2>Academic Background</h2>
+            <div class="timeline">
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h4>MBA</h4>
+                        <p>Amrita Vishwa Vidyapeetham, Coimbatore</p>
+                        <p>Expected Completion: 2025–2027</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h4>B.Com</h4>
+                        <p>Gobi Arts & Science College</p>
+                        <p>Completed: 2021–2024</p>
+                        <span class="cgpa">CGPA: 7.3</span>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h4>HSC (12th Grade)</h4>
+                        <p>SVN Matric Hr. Sec. School</p>
+                        <p>Completed: 2021</p>
+                        <span class="cgpa">Percentage: 92.5%</span>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h4>SSC (10th Grade)</h4>
+                        <p>SVN Matric Hr. Sec. School</p>
+                        <p>Completed: 2019</p>
+                        <span class="cgpa">Percentage: 89%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="achievements-hobbies">
+        <div class="container">
+            <h2>Extras & Interests</h2>
+            <div class="flex-row">
+                
+                <div class="col-half">
+                    <h3 style="text-align: center; color: var(--secondary-teal); margin-bottom: 20px;">Achievements & Extra-Curriculars</h3>
+                    <ul class="achievement-list">
+                        <li>Cleared SSC GD Exam (Demonstrates discipline and aptitude)</li>
+                        <li>Part of Social Service League (SSL) (Commitment to community)</li>
+                        <li>Attended camps up to Dwitya Sopan in Scouts & Guides (Leadership and self-reliance training)</li>
+                        <li>Languages: Tamil (native), English (Professional communication)</li>
+                    </ul>
+                </div>
+                
+                <div class="col-half">
+                    <h3 style="text-align: center; color: var(--secondary-teal); margin-bottom: 20px;">Personal Hobbies</h3>
+                    <div class="hobbies-grid">
+                        <div class="hobby-chip"><i class="fas fa-chess-king"></i> Playing Chess</div>
+                        <div class="hobby-chip"><i class="fas fa-tree"></i> Travelling to Forests</div>
+                        <div class="hobby-chip"><i class="fas fa-spa"></i> Meditation & Mindfulness</div>
+                        <div class="hobby-chip"><i class="fas fa-coins"></i> Collecting Numismatic Treasures</div>
+                        <div class="hobby-chip"><i class="fas fa-globe-asia"></i> Knowing Practices of People</div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <h2>Let's Connect</h2>
+            <p style="font-size: 1.2rem; margin-bottom: 30px;">I look forward to discussing how my analytical skills can benefit the Zoho Market Research team.</p>
             
-            <div class="edu-item">
-                <div class="job-header">
-                    <h3>Master of Business Administration (MBA)</h3>
-                    <span class="date">2025 - 2027</span>
+            <div class="contact-info-grid">
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i> +91 98942 29560
                 </div>
-                <div class="company">Amrita Vishwa Vidyapeetham, Coimbatore</div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i> sadhasivanesh8@gmail.com
                 </div>
+            </div>
 
-            <div class="edu-item">
-                <div class="job-header">
-                    <h3>Bachelor of Commerce</h3>
-                    <span class="date">2021 - 2024</span>
-                </div>
-                <div class="company">Gobi Arts & Science College, Gobichettipalayam</div>
-                <div class="date" style="margin-top:4px;">CGPA: 7.3</div>
-                </div>
+            <div class="contact-buttons">
+                <a href="mailto:sadhasivanesh8@gmail.com" class="cta-button cta-primary" style="background-color: var(--primary-navy); border-color: var(--primary-navy);">
+                    <i class="fas fa-paper-plane"></i> Email Me
+                </a>
+                <a href="https://www.linkedin.com/in/sadha-sivam-79833736a" target="_blank" class="cta-button cta-primary">
+                    <i class="fab fa-linkedin"></i> LinkedIn Profile
+                </a>
+            </div>
 
-            <div class="edu-item">
-                <div class="job-header">
-                    <h3>HSC (Commerce with Business Statistics)</h3>
-                    <span class="date">2021</span>
-                </div>
-                <div class="company">SVN Matric Higher Secondary School</div>
-                <div class="date" style="margin-top:4px;">Percentage: 92.5%</div>
-                </div>
-        </section>
+        </div>
+    </section>
 
-        <section class="section">
-            <h2>Achievements & Extra Curricular</h2>
-            <ul>
-                <li>Cleared Staff Selection Commission (SSC) GD Exam. [cite: 19]</li>
-                <li>Attended Scouts and Guides camps up to Dwitya Sopan. [cite: 20]</li>
-                <li>Active member of the Social Service League (SSL). [cite: 19]</li>
-            </ul>
-        </section>
-
-    </div>
-
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Sadhasivam. Online Resume. All content strictly from provided resume.</p>
+        </div>
+    </footer>
+    
     <script>
-        // Simple Intersection Observer for scroll animations
-        // This adds the "visible" class when sections come into view
-        document.addEventListener('DOMContentLoaded', () => {
-            const sections = document.querySelectorAll('.section');
+        document.addEventListener('DOMContentLoaded', (event) => {
+            // Get all sections except the hero
+            const sections = document.querySelectorAll('section:not(#hero)');
 
-            const observer = new IntersectionObserver((entries) => {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1 // Trigger when 10% of the section is visible
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
+                        entry.target.classList.add('loaded');
+                        observer.unobserve(entry.target); // Stop observing once loaded
                     }
                 });
-            }, {
-                threshold: 0.1 // Trigger when 10% of the section is visible
-            });
+            }, observerOptions);
 
             sections.forEach(section => {
                 observer.observe(section);
